@@ -1,14 +1,10 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.CreateParkingLotDTO;
 import com.switchfully.parkshark.mapper.ParkingLotMapper;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
-import com.switchfully.parkshark.entity.ParkingLot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotServiceTest {
 
@@ -19,7 +15,7 @@ class ParkingLotServiceTest {
     @BeforeEach
     void setUp() {
         parkingLotRepositoryMock = Mockito.mock(ParkingLotRepository.class);
-        parkingLotService = new ParkingLotService(parkingLotRepositoryMock, parkingLotMapper);
+        //parkingLotService = new ParkingLotService(parkingLotRepositoryMock, categoryRepository, parkingLotMapper);
 
 
     }

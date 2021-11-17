@@ -1,7 +1,6 @@
 package com.switchfully.parkshark.entity;
 
 
-
 import javax.persistence.*;
 
 @Entity
@@ -23,7 +22,7 @@ public class ParkingLot {
     private double hourlyPrice;
 
     @OneToOne
-    @JoinColumn(name="pl_cat_id")
+    @JoinColumn(name = "pl_cat_id")
     private Category category;
 
     @OneToOne
@@ -108,5 +107,31 @@ public class ParkingLot {
         }
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public double getHourlyPrice() {
+        return hourlyPrice;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Address getParkingLotAddress() {
+        return parkingLotAddress;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Division getDivision() {
+        return division;
+    }
 }
