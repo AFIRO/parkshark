@@ -36,6 +36,7 @@ public class MemberService {
     public MemberDTO createMember(CreateMemberDTO dto) {
         assertCorrectCreateMemberDTO(dto);
         var newMember = mapper.toEntity(dto);
+        logger.info("Data for create member valid");
         repository.save(newMember);
         return mapper.toDTO(newMember);
     }
