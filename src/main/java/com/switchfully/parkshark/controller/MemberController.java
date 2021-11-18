@@ -25,22 +25,24 @@ public class MemberController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
+    @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
     public MemberDTO createMember(@RequestBody CreateMemberDTO dto) {
         logger.info("Create member called");
         return memberService.createMember(dto);
     }
 
-    @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
+    @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
     public List<MemberDTO> getAllMembers(){
         logger.info("Get all members called");
         return memberService.getAllMembers();
     }
 
-    @GetMapping(produces = "application/json", params = {"memberId"})
+    @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public MemberDTO getSpecificMemberById(@RequestParam(value = "memberId", required = false) String id){
+    @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
+    public MemberDTO getSpecificMemberById(@PathVariable int id){
         logger.info("Get specific member called on member id:" + id);
         return memberService.getSpecificMemberById(id);
     }

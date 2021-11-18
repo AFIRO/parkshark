@@ -48,13 +48,13 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
-    public MemberDTO getSpecificMemberById(String id) {
-        var returnedMember = repository.findMemberByMemberId(Integer.parseInt(id));
+    public MemberDTO getSpecificMemberById(int id) {
+        var returnedMember = repository.findMemberByMemberId(id);
         if (returnedMember == null) {
             logger.error("Non-existent member requested");
             throw new NoSuchMemberException();
         }
-        return mapper.toDTO(repository.getById(Integer.parseInt(id)));
+        return mapper.toDTO(repository.getById(id));
     }
 
     private boolean checkValid(String input) {
