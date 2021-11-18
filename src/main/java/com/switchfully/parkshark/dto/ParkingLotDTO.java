@@ -27,6 +27,37 @@ public class ParkingLotDTO {
         this.division = division;
     }
 
+    public int getParkingLotId() {
+        return parkingLotId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public double getHourlyPrice() {
+        return hourlyPrice;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Address getParkingLotAddress() {
+        return parkingLotAddress;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Division getDivision() {
+        return division;
+    }
 
     public static final class ParkingLotDTOBuilder {
         private int parkingLotId;

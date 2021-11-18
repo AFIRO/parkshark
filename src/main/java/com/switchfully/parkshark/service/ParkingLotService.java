@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -29,8 +31,17 @@ public class ParkingLotService {
         this.parkingLotMapper = parkingLotMapper;
     }
 
+    public List<ParkingLotDTO> getAllLots(){
+        return parkingLotRepository.findAll()
+                .stream()
+                .map(parkingLotMapper::toDTO)
+                .collect(Collectors.toList());
+
+    }
+
 
     public ParkingLotDTO createParkingLot(CreateParkingLotDTO createParkingLotDTO) {
+        logger.info("attempting to create parkinglot...");
         ParkingLot parkingLot = parkingLotMapper.toEntity(createParkingLotDTO);
         assertThatCategoryDoesNotExistYet(parkingLot.getCategory().getCategoryName());
         ParkingLot savedParkingLot = parkingLotRepository.save(parkingLot);

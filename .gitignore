@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Totally Legit ###
-/log/
+/log/application.log
