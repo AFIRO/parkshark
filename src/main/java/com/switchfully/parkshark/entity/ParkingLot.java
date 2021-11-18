@@ -131,4 +131,8 @@ public class ParkingLot {
     public Division getDivision() {
         return division;
     }
+
+    public int getParkingLotId() {
+        return parkingLotId;
+    }
 }

@@ -2,6 +2,7 @@ package com.switchfully.parkshark.controller;
 
 import com.switchfully.parkshark.dto.CreateParkingLotDTO;
 import com.switchfully.parkshark.dto.ParkingLotDTO;
+import com.switchfully.parkshark.dto.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.service.ParkingLotService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,7 @@ public class ParkingLotController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ParkingLotDTO> getAllParkingLots(){
+    public List<ShortenedParkingLotDTO> getAllParkingLots(){
         logger.info("Attempting to get all parking lots.");
         return parkingLotService.getAllLots();
     }
