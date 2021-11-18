@@ -83,7 +83,7 @@ public class Member {
         private LicensePlate licensePlate;
         private MembershipLevel membershipLevel;
 
-
+    @OneToMany
         public Builder withFirstName(String firstName) {
             this.firstName = firstName;
             return this;

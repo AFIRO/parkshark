@@ -1,4 +1,4 @@
-package com.switchsecure;
+package com.switchfully.parkshark.switchsecure;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -30,7 +30,7 @@ public class VerySecureSecurityConfig implements WebMvcConfigurer {
 
     @Bean
     public OpenAPI addJWTAuthorizationHeaderToSwagger() {
-        https://github.com/springdoc/springdoc-openapi/issues/49
+        // https://github.com/springdoc/springdoc-openapi/issues/49
         return new OpenAPI().components(new Components().addSecuritySchemes("bearer-key",
                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
     }

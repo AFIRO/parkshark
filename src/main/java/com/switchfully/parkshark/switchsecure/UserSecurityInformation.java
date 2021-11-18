@@ -1,4 +1,4 @@
-package com.switchsecure;
+package com.switchfully.parkshark.switchsecure;
 
 public class UserSecurityInformation {
     private String name;

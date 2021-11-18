@@ -1,4 +1,4 @@
-package com.switchsecure;
+package com.switchfully.parkshark.switchsecure;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -34,7 +34,7 @@ public class SecurityGate implements HandlerInterceptor {
             return true;
         }
 
-        com.switchsecure.SecurityGuard annotation = ((HandlerMethod) handler).getMethod().getAnnotation(com.switchsecure.SecurityGuard.class);
+        SecurityGuard annotation = ((HandlerMethod) handler).getMethod().getAnnotation(SecurityGuard.class);
 
         if (annotation == null) {
             return true;
@@ -59,7 +59,7 @@ public class SecurityGate implements HandlerInterceptor {
 
     }
 
-    private boolean jwtMatchSecurityGuardRole(com.switchsecure.SecurityGuard.ApiUserRole value, HttpServletRequest request) {
+    private boolean jwtMatchSecurityGuardRole(SecurityGuard.ApiUserRole value, HttpServletRequest request) {
         if(getJWT(request) == null) {
             return false;
         }
@@ -72,7 +72,7 @@ public class SecurityGate implements HandlerInterceptor {
             return false;
         }
         return value.name().equals(getRoleFromJwtToken(getJWT(request)))
-               || com.switchsecure.SecurityGuard.ApiUserRole.ADMIN.name().equals(getRoleFromJwtToken(getJWT(request))) ;
+               ||SecurityGuard.ApiUserRole.ADMIN.name().equals(getRoleFromJwtToken(getJWT(request))) ;
 
 
     }
