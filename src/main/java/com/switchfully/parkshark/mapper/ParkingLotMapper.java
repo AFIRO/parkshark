@@ -24,7 +24,7 @@ public class ParkingLotMapper {
 
     public ParkingLot toEntity(CreateParkingLotDTO createParkingLotDTO) {
 
-        return ParkingLot.ParkingLotBuilder.aParkingLot()
+        return new ParkingLot.ParkingLotBuilder()
                 .withName(createParkingLotDTO.getName())
                 .withMaxCapacity(createParkingLotDTO.getMaxCapacity())
                 .withHourlyPrice(createParkingLotDTO.getHourlyPrice())
@@ -36,7 +36,7 @@ public class ParkingLotMapper {
     }
 
     public ParkingLotDTO toDTO(ParkingLot parkingLot) {
-        return ParkingLotDTO.ParkingLotDTOBuilder.aParkingLotDTO()
+        return new ParkingLotDTO.ParkingLotDTOBuilder()
                 .withName(parkingLot.getName())
                 .withMaxCapacity(parkingLot.getMaxCapacity())
                 .withHourlyPrice(parkingLot.getHourlyPrice())
