@@ -14,16 +14,23 @@ public class CreateMemberDTO {
     private Member.MembershipLevel membershipLevel;
     private LocalDate registrationDate;
 
+    public CreateMemberDTO(String firstName, String lastName, CreateAddressDTO address, String telephoneNumber, String email, CreateLicensePlateDTO licensePlateDTO, Member.MembershipLevel membershipLevel, LocalDate registrationDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.telephoneNumber = telephoneNumber;
+        this.email = email;
+        this.licensePlateDTO = licensePlateDTO;
+        this.membershipLevel = membershipLevel;
+        this.registrationDate = registrationDate;
+    }
+
     public CreateMemberDTO() {
         this.registrationDate = LocalDate.now();
     }
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -34,7 +41,6 @@ public class CreateMemberDTO {
     public String getTelephoneNumber() {
         return telephoneNumber;
     }
-
 
 
     public String getEmail() {
@@ -55,35 +61,7 @@ public class CreateMemberDTO {
         return address;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setAddress(CreateAddressDTO address) {
-        this.address = address;
-    }
-
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setLicensePlateDTO(CreateLicensePlateDTO licensePlateDTO) {
-        this.licensePlateDTO = licensePlateDTO;
-    }
-
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
     public Member.MembershipLevel getMembershipLevel() {
         return membershipLevel;
-    }
-
-    public void setMembershipLevel(Member.MembershipLevel membershipLevel) {
-        this.membershipLevel = membershipLevel;
     }
 }

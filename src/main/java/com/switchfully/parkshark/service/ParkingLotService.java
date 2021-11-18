@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,7 +33,7 @@ public class ParkingLotService {
     public List<ShortenedParkingLotDTO> getAllLots(){
         return parkingLotRepository.findAll()
                 .stream()
-                .map(parkingLotMapper::toShortenedDTO)
+                .map(parkingLotMapper::toShortenedDto)
                 .collect(Collectors.toList());
 
     }
@@ -44,16 +43,16 @@ public class ParkingLotService {
         logger.info("attempting to create parking lot...");
         ParkingLot parkingLot = parkingLotMapper.toEntity(createParkingLotDTO);
         parkingLotRepository.save(parkingLot);
-        return parkingLotMapper.toDTO(parkingLot);
+        return parkingLotMapper.toDto(parkingLot);
     }
 
-    public ParkingLotDTO getSpecificLot(int id) {
+    public ParkingLotDTO getSpecificLotById(int id) {
         logger.info("getting specific lot");
         var toCheck = parkingLotRepository.findById(id);
         if (toCheck.isEmpty())
             throw new NoSuchParkingLotException();
 
-        return parkingLotMapper.toDTO(toCheck.get());
+        return parkingLotMapper.toDto(toCheck.get());
     }
 
 

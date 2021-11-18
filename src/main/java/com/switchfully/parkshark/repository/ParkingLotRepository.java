@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
-@Transactional
 public interface ParkingLotRepository extends CrudRepository <ParkingLot, Integer>{
 
     List<ParkingLot> findAll();

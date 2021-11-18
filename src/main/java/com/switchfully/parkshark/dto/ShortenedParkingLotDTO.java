@@ -36,34 +36,34 @@ public class ShortenedParkingLotDTO {
         return employeeTelephoneNumber;
     }
 
-    public static final class ParkingLotDTOBuilder {
+    public static final class Builder {
         private int parkingLotId;
         private String name;
         private int maxCapacity;
         private String employeeEmail;
         private String employeeTelephoneNumber;
 
-        public ParkingLotDTOBuilder withParkingLotId(int parkingLotId) {
+        public Builder withParkingLotId(int parkingLotId) {
             this.parkingLotId = parkingLotId;
             return this;
         }
 
-        public ParkingLotDTOBuilder withName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public ParkingLotDTOBuilder withEmployeeEmail(String employeeEmail) {
+        public Builder withEmployeeEmail(String employeeEmail) {
             this.employeeEmail = employeeEmail;
             return this;
         }
 
-        public ParkingLotDTOBuilder withEmployeeTelephoneNumber(String employeeTelephoneNumber) {
+        public Builder withEmployeeTelephoneNumber(String employeeTelephoneNumber) {
             this.employeeTelephoneNumber = employeeTelephoneNumber;
             return this;
         }
 
-        public ParkingLotDTOBuilder withMaxCapacity(int maxCapacity) {
+        public Builder withMaxCapacity(int maxCapacity) {
             this.maxCapacity = maxCapacity;
             return this;
 

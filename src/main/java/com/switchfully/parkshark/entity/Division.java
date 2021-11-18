@@ -11,7 +11,7 @@ public class Division {
     @Column(name = "div_id")
     @SequenceGenerator(name = "Division_div_id_seq", sequenceName = "Division_div_id_seq", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Division_div_id_seq")
-    private int id;
+    private int divisionId;
 
     @Column(name = "div_name")
     private String name;
@@ -38,7 +38,7 @@ public class Division {
     }
 
     public int getId() {
-        return id;
+        return divisionId;
     }
 
     public String getName() {
@@ -58,57 +58,46 @@ public class Division {
     }
 
     @Override
-    public String toString() {
-        return "Division{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", originalName='" + originalName + '\'' +
-                ", director=" + director +
-                ", upperDivision=" + upperDivision +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Division division = (Division) o;
-        return id == division.id && Objects.equals(name, division.name) && Objects.equals(originalName, division.originalName) && Objects.equals(director, division.director) && Objects.equals(upperDivision, division.upperDivision);
+        return divisionId == division.divisionId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, originalName, director, upperDivision);
+        return Objects.hash(divisionId);
     }
 
-    public static class DivisionBuilder{
+    public static final class Builder {
         private String name;
         private String originalName;
-        private Employee employee;
-        private Division division;
+        private Employee director;
+        private Division upperDivision;
 
-        public DivisionBuilder setName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public DivisionBuilder setOriginalName(String originalName) {
+        public Builder withOriginalName(String originalName) {
             this.originalName = originalName;
             return this;
         }
 
-        public DivisionBuilder setEmployee(Employee employee) {
-            this.employee = employee;
+        public Builder withDirector(Employee director) {
+            this.director = director;
             return this;
         }
 
-        public DivisionBuilder setDivision(Division division) {
-            this.division = division;
+        public Builder withUpperDivision(Division upperDivision) {
+            this.upperDivision = upperDivision;
             return this;
         }
 
-        public Division build(){
-            return new Division(name, originalName, employee, division);
+        public Division build() {
+            return new Division(name, originalName, director, upperDivision);
         }
     }
 }

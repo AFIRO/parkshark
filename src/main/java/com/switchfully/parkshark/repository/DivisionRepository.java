@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface DivisionRepository extends CrudRepository<Division, Integer> {
 
+    Division findByDivisionId(int id);
     List<Division> findAll();
 }

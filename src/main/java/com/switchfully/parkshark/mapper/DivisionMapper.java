@@ -8,48 +8,47 @@ import com.switchfully.parkshark.repository.EmployeeRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
 public class DivisionMapper {
 
-    private DivisionRepository divisionRepository;
-    private EmployeeRepository employeeRepository;
+    private final DivisionRepository divisionRepository;
+    private final EmployeeRepository employeeRepository;
 
     public DivisionMapper(DivisionRepository divisionRepository, EmployeeRepository employeeRepository) {
         this.divisionRepository = divisionRepository;
         this.employeeRepository = employeeRepository;
     }
 
-    public List<DivisionDTO> toDtoList(List<Division> divisionList) {
-        return divisionList.stream().map(this::toDtoDivision).collect(Collectors.toList());
+    public List<DivisionDTO> toDto(List<Division> divisionList) {
+        return divisionList.stream().map(this::toDto).collect(Collectors.toList());
     }
 
-    public Division toEntityDivision(CreateDivisionDTO createDivisionDTO) {
-        if(createDivisionDTO.getDivision() != null){
-            return new Division.DivisionBuilder()
-                    .setName(createDivisionDTO.getName())
-                    .setOriginalName(createDivisionDTO.getOriginalName())
-                    .setEmployee(employeeRepository.findById(createDivisionDTO.getDirector()).get())
-                    .setDivision(divisionRepository.findById(createDivisionDTO.getDivision()).get())
+    public Division toEntity(CreateDivisionDTO createDivisionDTO) {
+        if(createDivisionDTO.getUpperDivision() != null){
+            return new Division.Builder()
+                    .withName(createDivisionDTO.getName())
+                    .withOriginalName(createDivisionDTO.getOriginalName())
+                    .withDirector(employeeRepository.findById(createDivisionDTO.getDirector()).get())
+                    .withUpperDivision(divisionRepository.findById(createDivisionDTO.getUpperDivision()).get())
                     .build();
         } else {
-            return new Division.DivisionBuilder()
-                    .setName(createDivisionDTO.getName())
-                    .setOriginalName(createDivisionDTO.getOriginalName())
-                    .setEmployee(employeeRepository.findById(createDivisionDTO.getDirector()).get())
+            return new Division.Builder()
+                    .withName(createDivisionDTO.getName())
+                    .withOriginalName(createDivisionDTO.getOriginalName())
+                    .withDirector(employeeRepository.findById(createDivisionDTO.getDirector()).get())
                     .build();
         }
     }
 
-    public DivisionDTO toDtoDivision(Division division) {
-        return new DivisionDTO.DivisionDTOBuilder()
-                .setId(division.getId())
-                .setName(division.getName())
-                .setOriginalName(division.getOriginalName())
-                .setEmployee(division.getDirector())
-                .setDivision(division.getUpperDivision())
+    public DivisionDTO toDto(Division division) {
+        return new DivisionDTO.Builder()
+                .withId(division.getId())
+                .withName(division.getName())
+                .withOriginalName(division.getOriginalName())
+                .withEmployee(division.getDirector())
+                .withDivision(division.getUpperDivision())
                 .build();
     }
 

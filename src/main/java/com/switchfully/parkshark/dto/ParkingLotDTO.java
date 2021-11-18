@@ -59,7 +59,7 @@ public class ParkingLotDTO {
         return division;
     }
 
-    public static final class ParkingLotDTOBuilder {
+    public static final class Builder {
         private int parkingLotId;
         private String name;
         private int maxCapacity;
@@ -70,42 +70,42 @@ public class ParkingLotDTO {
         private Division division;
 
 
-        public ParkingLotDTOBuilder withParkingLotId(int parkingLotId) {
+        public Builder withParkingLotId(int parkingLotId) {
             this.parkingLotId = parkingLotId;
             return this;
         }
 
-        public ParkingLotDTOBuilder withName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public ParkingLotDTOBuilder withMaxCapacity(int maxCapacity) {
+        public Builder withMaxCapacity(int maxCapacity) {
             this.maxCapacity = maxCapacity;
             return this;
         }
 
-        public ParkingLotDTOBuilder withHourlyPrice(double hourlyPrice) {
+        public Builder withHourlyPrice(double hourlyPrice) {
             this.hourlyPrice = hourlyPrice;
             return this;
         }
 
-        public ParkingLotDTOBuilder withCategory(ParkingLot.Category category) {
+        public Builder withCategory(ParkingLot.Category category) {
             this.category = category;
             return this;
         }
 
-        public ParkingLotDTOBuilder withParkingLotAddress(Address parkingLotAddress) {
+        public Builder withParkingLotAddress(Address parkingLotAddress) {
             this.parkingLotAddress = parkingLotAddress;
             return this;
         }
 
-        public ParkingLotDTOBuilder withEmployee(Employee employee) {
+        public Builder withEmployee(Employee employee) {
             this.employee = employee;
             return this;
         }
 
-        public ParkingLotDTOBuilder withDivision(Division division) {
+        public Builder withDivision(Division division) {
             this.division = division;
             return this;
         }

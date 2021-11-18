@@ -25,19 +25,10 @@ public class CreateAddressDTO {
         return city;
     }
 
-    public void setStreet(String street) {
+    public CreateAddressDTO(String street, String houseNumber, String zipcode, String city) {
         this.street = street;
-    }
-
-    public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
-    }
-
-    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
-    }
-
-    public void setCity(String city) {
         this.city = city;
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/members")
+@RequestMapping(path = "members")
 public class MemberController {
     private final MemberService memberService;
     private final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -26,24 +26,24 @@ public class MemberController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public MemberDTO createMember(@RequestBody CreateMemberDTO dto) {
-        logger.info("Create member called");
-        return memberService.createMember(dto);
+    public MemberDTO createMember(@RequestBody CreateMemberDTO createMemberDTO) {
+        logger.info("Attempting to create a member.");
+        return memberService.createMember(createMemberDTO);
     }
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
     public List<MemberDTO> getAllMembers(){
-        logger.info("Get all members called");
+        logger.info("Attempting to get all members.");
         return memberService.getAllMembers();
     }
 
-    @GetMapping(path = "/{id}", produces = "application/json")
+    @GetMapping(path = "/{memberId}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public MemberDTO getSpecificMemberById(@PathVariable int id){
-        logger.info("Get specific member called on member id:" + id);
-        return memberService.getSpecificMemberById(id);
+    public MemberDTO getSpecificMemberById(@PathVariable int memberId){
+        logger.info("Attempting to get specific member called on member id:" + memberId);
+        return memberService.getSpecificMemberById(memberId);
     }
 }

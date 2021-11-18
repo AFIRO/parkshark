@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,12 +28,12 @@ public class DivisionService {
         this.employeeRepository = employeeRepository;
     }
 
-    public DivisionDTO save(CreateDivisionDTO createDivisionDTO) {
+    public DivisionDTO createDivision(CreateDivisionDTO createDivisionDTO) {
         if(createDivisionDTO == null){
             throw new InvalidInputException();
         }
-        if(createDivisionDTO.getDivision() != null){
-            if(divisionRepository.findById(createDivisionDTO.getDivision()).isEmpty()){
+        if(createDivisionDTO.getUpperDivision() != null){
+            if(divisionRepository.findById(createDivisionDTO.getUpperDivision()).isEmpty()){
                 throw new NoSuchDivisionException();
             }
         }
@@ -43,18 +42,21 @@ public class DivisionService {
             throw new NoSuchEmployeeException();
         }
 
-        Division division = divisionMapper.toEntityDivision(createDivisionDTO);
+        Division division = divisionMapper.toEntity(createDivisionDTO);
         divisionRepository.save(division);
-        return divisionMapper.toDtoDivision(division);
+        return divisionMapper.toDto(division);
     }
 
     public List<DivisionDTO> getAllDivisions() {
-        return divisionMapper.toDtoList(divisionRepository.findAll());
+        return divisionMapper.toDto(divisionRepository.findAll());
     }
 
-    public DivisionDTO getDivision(int divisionid) {
-        Optional<Division> optionalDivision = divisionRepository.findById(divisionid);
-        if(optionalDivision.isEmpty()) throw new NoSuchDivisionException();
-        return divisionMapper.toDtoDivision(optionalDivision.get());
+    public DivisionDTO getSpecificDivisionById(int divisionid) {
+        var returnedDivision = divisionRepository.findByDivisionId(divisionid);
+        if (returnedDivision == null) {
+//            logger.error("Non-existent member requested");
+            throw new NoSuchDivisionException();
+        }
+        return divisionMapper.toDto(divisionRepository.findByDivisionId(divisionid));
     }
 }

@@ -39,40 +39,41 @@ public class DivisionDTO {
         return division;
     }
 
-    public static class DivisionDTOBuilder {
+
+    public static final class Builder {
         private int id;
         private String name;
         private String originalName;
         private Employee employee;
         private Division division;
 
-        public DivisionDTOBuilder setId(int id) {
+        public Builder withId(int id) {
             this.id = id;
             return this;
         }
 
-        public DivisionDTOBuilder setName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public DivisionDTOBuilder setOriginalName(String originalName) {
+        public Builder withOriginalName(String originalName) {
             this.originalName = originalName;
             return this;
         }
 
-        public DivisionDTOBuilder setEmployee(Employee employee) {
+        public Builder withEmployee(Employee employee) {
             this.employee = employee;
             return this;
         }
 
-        public DivisionDTOBuilder setDivision(Division division) {
+        public Builder withDivision(Division division) {
             this.division = division;
             return this;
         }
 
-        public DivisionDTO build(){
-            return new DivisionDTO(this.id, this.name, this.originalName, this.employee, this.division);
+        public DivisionDTO build() {
+            return new DivisionDTO(id, name, originalName, employee, division);
         }
     }
 }

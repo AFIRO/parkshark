@@ -29,15 +29,15 @@ class MemberServiceTest {
     void before() {
         memberRepository = Mockito.mock(MemberRepository.class);
         memberService = new MemberService(memberMapper, memberRepository);
-        CreateAddressDTO newAddressDTO = new CreateAddressDTO();
-        CreateLicensePlateDTO newLicensePlateDTO = new CreateLicensePlateDTO();
+        CreateAddressDTO newAddressDTO = new CreateAddressDTO("testStreet", "1", "2000", "Brussels");
+        CreateLicensePlateDTO newLicensePlateDTO = new CreateLicensePlateDTO("1", "1");
         createMemberDTO = new CreateMemberDTO();
-        createMemberDTO.setFirstName("John");
-        createMemberDTO.setLastName("Doe");
-        createMemberDTO.setAddress(newAddressDTO);
-        createMemberDTO.setLicensePlateDTO(newLicensePlateDTO);
+//        createMemberDTO.setFirstName("John");
+//        createMemberDTO.setLastName("Doe");
+//        createMemberDTO.setAddress(newAddressDTO);
+//        createMemberDTO.setLicensePlateDTO(newLicensePlateDTO);
         newMember = memberMapper.toEntity(createMemberDTO);
-        newMemberDTO = memberMapper.toDTO(newMember);
+        newMemberDTO = memberMapper.toDto(newMember);
     }
 
     @Test

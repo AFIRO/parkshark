@@ -11,7 +11,7 @@ public class Address {
     @SequenceGenerator(name = "address_add_id_seq", sequenceName = "address_add_id_seq", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_add_id_seq")
     @Column(name = "add_id")
-    private int id;
+    private int addressId;
 
     @Column(name = "add_street")
     private String street;
@@ -29,8 +29,15 @@ public class Address {
 
     }
 
+    public Address(String street, String houseNumber, String zipcode, String city) {
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.zipcode = zipcode;
+        this.city = city;
+    }
+
     public int getId() {
-        return id;
+        return addressId;
     }
 
     public String getStreet() {
@@ -49,24 +56,17 @@ public class Address {
         return city;
     }
 
-    public Address(String street, String houseNumber, String zipcode, String city) {
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.zipcode = zipcode;
-        this.city = city;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return id == address.id && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber) && Objects.equals(zipcode, address.zipcode) && Objects.equals(city, address.city);
+        return addressId == address.addressId && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber) && Objects.equals(zipcode, address.zipcode) && Objects.equals(city, address.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, street, houseNumber, zipcode, city);
+        return Objects.hash(addressId, street, houseNumber, zipcode, city);
     }
 
     public static class Builder {
@@ -96,8 +96,8 @@ public class Address {
         }
 
 
-        public Address build(){
-            return new Address(street,houseNumber,zipcode,city);
+        public Address build() {
+            return new Address(street, houseNumber, zipcode, city);
         }
     }
 

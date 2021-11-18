@@ -2,12 +2,13 @@ package com.switchfully.parkshark.entity;
 
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "parking_lot")
 public class ParkingLot {
 
-    public enum Category { UNDER_GROUND_BUILDING, ABOVE_GROUND_GROUND }
+    public enum Category {UNDER_GROUND_BUILDING, ABOVE_GROUND_GROUND}
 
     @Id
     @SequenceGenerator(name = "parking_lot_pl_id_seq", sequenceName = "parking_lot_pl_id_seq", initialValue = 1, allocationSize = 1)
@@ -53,57 +54,6 @@ public class ParkingLot {
         this.division = division;
     }
 
-
-    public static final class ParkingLotBuilder {
-        private String name;
-        private int maxCapacity;
-        private double hourlyPrice;
-        private Category category;
-        private Address parkingLotAddress;
-        private Employee employee;
-        private Division division;
-
-
-        public ParkingLotBuilder withName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public ParkingLotBuilder withMaxCapacity(int maxCapacity) {
-            this.maxCapacity = maxCapacity;
-            return this;
-        }
-
-        public ParkingLotBuilder withHourlyPrice(double hourlyPrice) {
-            this.hourlyPrice = hourlyPrice;
-            return this;
-        }
-
-        public ParkingLotBuilder withCategory(Category category) {
-            this.category = category;
-            return this;
-        }
-
-        public ParkingLotBuilder withParkingLotAddress(Address parkingLotAddress) {
-            this.parkingLotAddress = parkingLotAddress;
-            return this;
-        }
-
-        public ParkingLotBuilder withEmployee(Employee employee) {
-            this.employee = employee;
-            return this;
-        }
-
-        public ParkingLotBuilder withDivision(Division division) {
-            this.division = division;
-            return this;
-        }
-
-        public ParkingLot build() {
-            return new ParkingLot(name, maxCapacity, hourlyPrice, category, parkingLotAddress, employee, division);
-        }
-    }
-
     public String getName() {
         return name;
     }
@@ -135,4 +85,69 @@ public class ParkingLot {
     public int getParkingLotId() {
         return parkingLotId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingLot that = (ParkingLot) o;
+        return parkingLotId == that.parkingLotId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parkingLotId);
+    }
+
+    public static final class Builder {
+        private String name;
+        private int maxCapacity;
+        private double hourlyPrice;
+        private Category category;
+        private Address parkingLotAddress;
+        private Employee employee;
+        private Division division;
+
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withMaxCapacity(int maxCapacity) {
+            this.maxCapacity = maxCapacity;
+            return this;
+        }
+
+        public Builder withHourlyPrice(double hourlyPrice) {
+            this.hourlyPrice = hourlyPrice;
+            return this;
+        }
+
+        public Builder withCategory(Category category) {
+            this.category = category;
+            return this;
+        }
+
+        public Builder withParkingLotAddress(Address parkingLotAddress) {
+            this.parkingLotAddress = parkingLotAddress;
+            return this;
+        }
+
+        public Builder withEmployee(Employee employee) {
+            this.employee = employee;
+            return this;
+        }
+
+        public Builder withDivision(Division division) {
+            this.division = division;
+            return this;
+        }
+
+        public ParkingLot build() {
+            return new ParkingLot(name, maxCapacity, hourlyPrice, category, parkingLotAddress, employee, division);
+        }
+    }
+
+
 }

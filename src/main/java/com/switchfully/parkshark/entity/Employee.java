@@ -1,6 +1,7 @@
 package com.switchfully.parkshark.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Employee")
@@ -10,7 +11,7 @@ public class Employee {
     @SequenceGenerator(name = "employee_emp_id_seq", sequenceName = "employee_emp_id_seq", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_emp_id_seq")
     @Column(name = "emp_id")
-    private int id;
+    private int employeeId;
 
     @Column(name = "emp_firstname")
     private String firstName;
@@ -52,7 +53,7 @@ public class Employee {
     }
 
     public int getId() {
-        return id;
+        return employeeId;
     }
 
     public String getFirstName() {
@@ -87,7 +88,20 @@ public class Employee {
         return empTitle;
     }
 
-    public static final class EmployeeBuilder {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return employeeId == employee.employeeId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeId);
+    }
+
+    public static final class Builder {
         private String firstName;
         private String lastName;
         private String mobileNumber;
@@ -97,49 +111,42 @@ public class Employee {
         private String email;
         private String empTitle;
 
-        private EmployeeBuilder() {
-        }
-
-        public static EmployeeBuilder anEmployee() {
-            return new EmployeeBuilder();
-        }
-
-        public EmployeeBuilder withFirstName(String firstName) {
+        public Builder withFirstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public EmployeeBuilder withLastName(String lastName) {
+        public Builder withLastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-        public EmployeeBuilder withMobileNumber(String mobileNumber) {
+        public Builder withMobileNumber(String mobileNumber) {
             this.mobileNumber = mobileNumber;
             return this;
         }
 
-        public EmployeeBuilder withTelephoneNumber(String telephoneNumber) {
+        public Builder withTelephoneNumber(String telephoneNumber) {
             this.telephoneNumber = telephoneNumber;
             return this;
         }
 
-        public EmployeeBuilder withAddress(Address address) {
+        public Builder withAddress(Address address) {
             this.address = address;
             return this;
         }
 
-        public EmployeeBuilder withParkingLot(ParkingLot parkingLot) {
+        public Builder withParkingLot(ParkingLot parkingLot) {
             this.parkingLot = parkingLot;
             return this;
         }
 
-        public EmployeeBuilder withEmail(String email) {
+        public Builder withEmail(String email) {
             this.email = email;
             return this;
         }
 
-        public EmployeeBuilder withEmpTitle(String empTitle) {
+        public Builder withEmpTitle(String empTitle) {
             this.empTitle = empTitle;
             return this;
         }

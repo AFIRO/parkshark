@@ -35,7 +35,7 @@ public class ParkingLotMapper {
         if (toCheckEmployee.isEmpty())
             throw new NoSuchEmployeeException();
 
-        return new ParkingLot.ParkingLotBuilder()
+        return new ParkingLot.Builder()
                 .withName(createParkingLotDTO.getName())
                 .withMaxCapacity(createParkingLotDTO.getMaxCapacity())
                 .withHourlyPrice(createParkingLotDTO.getHourlyPrice())
@@ -48,8 +48,8 @@ public class ParkingLotMapper {
 
     }
 
-    public ParkingLotDTO toDTO(ParkingLot parkingLot) {
-        return new ParkingLotDTO.ParkingLotDTOBuilder()
+    public ParkingLotDTO toDto(ParkingLot parkingLot) {
+        return new ParkingLotDTO.Builder()
                 .withParkingLotId(parkingLot.getParkingLotId())
                 .withName(parkingLot.getName())
                 .withMaxCapacity(parkingLot.getMaxCapacity())
@@ -61,8 +61,8 @@ public class ParkingLotMapper {
                 .build();
     }
 
-    public ShortenedParkingLotDTO toShortenedDTO(ParkingLot parkingLot) {
-        return new ShortenedParkingLotDTO.ParkingLotDTOBuilder()
+    public ShortenedParkingLotDTO toShortenedDto(ParkingLot parkingLot) {
+        return new ShortenedParkingLotDTO.Builder()
                 .withName(parkingLot.getName())
                 .withMaxCapacity(parkingLot.getMaxCapacity())
                 .withParkingLotId(parkingLot.getParkingLotId())

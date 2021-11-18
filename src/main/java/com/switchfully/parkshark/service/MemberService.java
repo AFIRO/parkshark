@@ -33,36 +33,36 @@ public class MemberService {
         this.repository = repository;
     }
 
-    public MemberDTO createMember(CreateMemberDTO dto) {
-        assertCorrectCreateMemberDTO(dto);
-        var newMember = mapper.toEntity(dto);
+    public MemberDTO createMember(CreateMemberDTO createMemberDTO) {
+        assertCorrectCreateMemberDTO(createMemberDTO);
+        var newMember = mapper.toEntity(createMemberDTO);
         logger.info("Data for create member valid");
         repository.save(newMember);
-        return mapper.toDTO(newMember);
+        return mapper.toDto(newMember);
     }
 
     public List<MemberDTO> getAllMembers() {
         return repository.findAll()
                 .stream()
-                .map(mapper::toDTO)
+                .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
 
-    public MemberDTO getSpecificMemberById(int id) {
-        var returnedMember = repository.findMemberByMemberId(id);
+    public MemberDTO getSpecificMemberById(int memberId) {
+        var returnedMember = repository.findMemberByMemberId(memberId);
         if (returnedMember == null) {
             logger.error("Non-existent member requested");
             throw new NoSuchMemberException();
         }
-        return mapper.toDTO(repository.getById(id));
+        return mapper.toDto(repository.findMemberByMemberId(memberId));
     }
 
     private boolean checkValid(String input) {
-        return !input.isBlank() && !input.isEmpty() && input != null;
+        return input != null && !input.isBlank() && !input.isEmpty();
     }
 
-    private boolean assertCorrectCreateMemberDTO(CreateMemberDTO dto) {
-        var toCheck = checkValid(dto.getFirstName()) || checkValid(dto.getLastName()) || checkValid(dto.getEmail()) || checkValid(dto.getLicensePlateDTO().getLicensePlateNumber()) || checkValid(dto.getLicensePlateDTO().getLicensePlateCountry()) || checkValid(dto.getTelephoneNumber()) || assertCorrectCreateLicensePlateDTO(dto.getLicensePlateDTO()) || assertCorrectCreateAddressDTO(dto.getAddress());
+    private boolean assertCorrectCreateMemberDTO(CreateMemberDTO createMemberDTO) {
+        var toCheck = checkValid(createMemberDTO.getFirstName()) || checkValid(createMemberDTO.getLastName()) || checkValid(createMemberDTO.getEmail()) || checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateNumber()) || checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateCountry()) || checkValid(createMemberDTO.getTelephoneNumber()) || assertCorrectCreateLicensePlateDTO(createMemberDTO.getLicensePlateDTO()) || assertCorrectCreateAddressDTO(createMemberDTO.getAddress());
 
         if (!toCheck) {
             logger.error("Data provided for new member invalid");

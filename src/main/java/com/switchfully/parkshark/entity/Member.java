@@ -1,7 +1,6 @@
 package com.switchfully.parkshark.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,7 +8,7 @@ import java.util.Objects;
 @Table(name = "member")
 public class Member {
 
-    public enum MembershipLevel { BRONZE, SILVER, GOLD }
+    public enum MembershipLevel {BRONZE, SILVER, GOLD}
 
     @Id
     @SequenceGenerator(name = "member_mem_id_seq", sequenceName = "member_mem_id_seq", initialValue = 1, allocationSize = 1)
@@ -28,7 +27,6 @@ public class Member {
     private Address address;
 
     @Column(name = "mem_email_address")
-    @Email
     private String email;
 
     @Column(name = "mem_telephone_number")
@@ -43,10 +41,57 @@ public class Member {
 
     @Column(name = "mem_msl")
     @Enumerated(EnumType.STRING)
-    private MembershipLevel  membershipLevel;
+    private MembershipLevel membershipLevel;
 
     public Member() {
 
+    }
+
+    public Member(String firstName, String lastName, Address address, String email, String telephoneNumber, LocalDate registrationDate, LicensePlate licensePlate, MembershipLevel membershipLevel) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.telephoneNumber = telephoneNumber;
+        this.registrationDate = registrationDate;
+        this.licensePlate = licensePlate;
+        this.membershipLevel = membershipLevel;
+    }
+
+    public Integer getMemberId() {
+        return memberId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public LicensePlate getLicensePlate() {
+        return licensePlate;
+    }
+
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
     }
 
     @Override
@@ -63,32 +108,6 @@ public class Member {
         return Objects.hash(getMemberId());
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "memberId=" + memberId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address=" + address +
-                ", email='" + email + '\'' +
-                ", telephoneNumber='" + telephoneNumber + '\'' +
-                ", registrationDate=" + registrationDate +
-                ", licensePlate=" + licensePlate +
-                ", membershipLevel=" + membershipLevel +
-                '}';
-    }
-
-    public Member(String firstName, String lastName, Address address, String email, String telephoneNumber, LocalDate registrationDate, LicensePlate licensePlate, MembershipLevel membershipLevel) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.email = email;
-        this.telephoneNumber = telephoneNumber;
-        this.registrationDate = registrationDate;
-        this.licensePlate = licensePlate;
-        this.membershipLevel = membershipLevel;
-    }
-
     public static class Builder {
         private String firstName;
         private String lastName;
@@ -99,7 +118,6 @@ public class Member {
         private LicensePlate licensePlate;
         private MembershipLevel membershipLevel;
 
-    @OneToMany
         public Builder withFirstName(String firstName) {
             this.firstName = firstName;
             return this;
@@ -145,39 +163,5 @@ public class Member {
         }
     }
 
-    public Integer getMemberId() {
-        return memberId;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public LicensePlate getLicensePlate() {
-        return licensePlate;
-    }
-
-    public MembershipLevel getMembershipLevel() {
-        return membershipLevel;
-    }
 }

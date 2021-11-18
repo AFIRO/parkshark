@@ -26,6 +26,19 @@ public class LicensePlate {
         this.licensePlateCountry = licensePlateCountry;
     }
 
+    public Integer getLicensePlateId() {
+        return licensePlateId;
+    }
+
+    public String getLicensePlateNumber() {
+        return licensePlateNumber;
+    }
+
+    public String getLicensePlateCountry() {
+        return licensePlateCountry;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,7 +52,7 @@ public class LicensePlate {
         return Objects.hash(licensePlateId, licensePlateNumber, licensePlateCountry);
     }
 
-    public static class Builder{
+    public static class Builder {
         private String licensePlateNumber;
         private String licensePlateCountry;
 
@@ -53,21 +66,10 @@ public class LicensePlate {
             return this;
         }
 
-        public LicensePlate build(){
-            return new LicensePlate(licensePlateNumber,licensePlateCountry);
+        public LicensePlate build() {
+            return new LicensePlate(licensePlateNumber, licensePlateCountry);
         }
     }
 
-    public Integer getLicensePlateId() {
-        return licensePlateId;
-    }
-
-    public String getLicensePlateNumber() {
-        return licensePlateNumber;
-    }
-
-    public String getLicensePlateCountry() {
-        return licensePlateCountry;
-    }
 
 }
