@@ -10,8 +10,8 @@ public class CreateParkingLotDTO {
     private final double hourlyPrice;
     private final ParkingLot.Category category;
     private final CreateAddressDTO address;
-    private final CreateEmployeeDTO employee;
-    private final CreateDivisionDTO division;
+    private final Integer employee;
+    private final Integer division;
 
     private CreateParkingLotDTO(String name, int maxCapacity, double hourlyPrice, ParkingLot.Category category, CreateAddressDTO address, Integer employee, Integer division) {
         this.name = name;
@@ -39,11 +39,11 @@ public class CreateParkingLotDTO {
         return category;
     }
 
-    public CreateEmployeeDTO getEmployee() {
+    public Integer getEmployee() {
         return employee;
     }
 
-    public CreateDivisionDTO getDivision() {
+    public Integer getDivision() {
         return division;
     }
 

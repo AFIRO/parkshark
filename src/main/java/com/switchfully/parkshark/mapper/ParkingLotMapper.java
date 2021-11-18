@@ -14,16 +14,14 @@ import org.springframework.stereotype.Component;
 public class ParkingLotMapper {
 
     private final AddressMapper addressMapper;
-    private final EmployeeMapper employeeMapper;
-    private final DivisionMapper divisionMapper;
-    private final CategoryMapper categoryMapper;
+    private final EmployeeRepository employeeRepository;
+    private final DivisionRepository divisionRepository;
 
     @Autowired
-    public ParkingLotMapper(AddressMapper addressMapper, EmployeeMapper employeeMapper, DivisionMapper divisionMapper, CategoryMapper categoryMapper) {
+    public ParkingLotMapper(AddressMapper addressMapper, EmployeeRepository employeeRepository, DivisionRepository divisionRepository) {
         this.addressMapper = addressMapper;
-        this.employeeMapper = employeeMapper;
-        this.divisionMapper = divisionMapper;
-        this.categoryMapper = categoryMapper;
+        this.employeeRepository = employeeRepository;
+        this.divisionRepository = divisionRepository;
     }
 
     public ParkingLot toEntity(CreateParkingLotDTO createParkingLotDTO) {

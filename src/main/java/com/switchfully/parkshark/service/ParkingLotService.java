@@ -40,9 +40,8 @@ public class ParkingLotService {
 
 
     public ParkingLotDTO createParkingLot(CreateParkingLotDTO createParkingLotDTO) {
-        logger.info("attempting to create parkinglot...");
+        logger.info("attempting to create parking lot...");
         ParkingLot parkingLot = parkingLotMapper.toEntity(createParkingLotDTO);
-        assertThatCategoryDoesNotExistYet(parkingLot.getCategory().getCategoryName());
         parkingLotRepository.save(parkingLot);
         return parkingLotMapper.toDTO(parkingLot);
     }
