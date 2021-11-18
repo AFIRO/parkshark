@@ -4,10 +4,11 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "licensePlate")
+@Table(name = "license_plate")
 public class LicensePlate {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "licensePlate_lp_id_seq", sequenceName = "licensePlate_lp_id_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "licensePlate_lp_id_seq")
     @Column(name = "lp_id", nullable = false)
     private Integer licensePlateId;
 
