@@ -3,6 +3,7 @@ package com.switchfully.parkshark.controller;
 import com.switchfully.parkshark.dto.CreateMemberDTO;
 import com.switchfully.parkshark.dto.MemberDTO;
 import com.switchfully.parkshark.service.MemberService;
+import com.switchfully.parkshark.switchsecure.SecurityGuard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class MemberController {
         return memberService.createMember(dto);
     }
 
+    @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public List<MemberDTO> getAllMembers(){

@@ -15,6 +15,6 @@ public @interface SecurityGuard {
     ApiUserRole value() ;
 
     enum ApiUserRole {
-        ADMIN, CUSTOMER
+        ADMIN, CUSTOMER, MANAGER
     }
 }

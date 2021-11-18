@@ -73,8 +73,6 @@ public class SecurityGate implements HandlerInterceptor {
         }
         return value.name().equals(getRoleFromJwtToken(getJWT(request)))
                ||SecurityGuard.ApiUserRole.ADMIN.name().equals(getRoleFromJwtToken(getJWT(request))) ;
-
-
     }
 
     private String getJWT(HttpServletRequest request) {
@@ -116,6 +114,5 @@ public class SecurityGate implements HandlerInterceptor {
         DecodedJWT jwt = verifier.verify(token);
         return jwt.getClaim("role").asString();
     }
-
 
 }

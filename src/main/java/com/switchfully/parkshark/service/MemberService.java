@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class MemberService {
+
     private final MemberMapper mapper;
     private final MemberRepository repository;
     private final Logger logger = LoggerFactory.getLogger(MemberService.class);
