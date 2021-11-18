@@ -2,6 +2,7 @@ package com.switchfully.parkshark.mapper;
 
 import com.switchfully.parkshark.dto.CreateParkingLotDTO;
 import com.switchfully.parkshark.dto.ParkingLotDTO;
+import com.switchfully.parkshark.dto.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.entity.ParkingLot;
 import com.switchfully.parkshark.exceptions.NoSuchDivisionException;
 import com.switchfully.parkshark.exceptions.NoSuchEmployeeException;
@@ -49,6 +50,7 @@ public class ParkingLotMapper {
 
     public ParkingLotDTO toDTO(ParkingLot parkingLot) {
         return new ParkingLotDTO.ParkingLotDTOBuilder()
+                .withParkingLotId(parkingLot.getParkingLotId())
                 .withName(parkingLot.getName())
                 .withMaxCapacity(parkingLot.getMaxCapacity())
                 .withHourlyPrice(parkingLot.getHourlyPrice())
@@ -56,6 +58,16 @@ public class ParkingLotMapper {
                 .withParkingLotAddress(parkingLot.getParkingLotAddress())
                 .withEmployee(parkingLot.getEmployee())
                 .withDivision(parkingLot.getDivision())
+                .build();
+    }
+
+    public ShortenedParkingLotDTO toShortenedDTO(ParkingLot parkingLot) {
+        return new ShortenedParkingLotDTO.ParkingLotDTOBuilder()
+                .withName(parkingLot.getName())
+                .withMaxCapacity(parkingLot.getMaxCapacity())
+                .withParkingLotId(parkingLot.getParkingLotId())
+                .withEmployeeEmail(parkingLot.getEmployee().getEmail())
+                .withEmployeeTelephoneNumber(parkingLot.getEmployee().getTelephoneNumber())
                 .build();
     }
 }

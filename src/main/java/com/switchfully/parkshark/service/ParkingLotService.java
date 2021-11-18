@@ -2,6 +2,7 @@ package com.switchfully.parkshark.service;
 
 import com.switchfully.parkshark.dto.CreateParkingLotDTO;
 import com.switchfully.parkshark.dto.ParkingLotDTO;
+import com.switchfully.parkshark.dto.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.entity.ParkingLot;
 import com.switchfully.parkshark.exceptions.NoSuchParkingLotException;
 import com.switchfully.parkshark.mapper.ParkingLotMapper;
@@ -30,10 +31,10 @@ public class ParkingLotService {
         this.parkingLotMapper = parkingLotMapper;
     }
 
-    public List<ParkingLotDTO> getAllLots(){
+    public List<ShortenedParkingLotDTO> getAllLots(){
         return parkingLotRepository.findAll()
                 .stream()
-                .map(parkingLotMapper::toDTO)
+                .map(parkingLotMapper::toShortenedDTO)
                 .collect(Collectors.toList());
 
     }
