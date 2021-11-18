@@ -38,12 +38,6 @@ public class ParkingLotDTO {
         private Employee employee;
         private Division division;
 
-        private ParkingLotDTOBuilder() {
-        }
-
-        public static ParkingLotDTOBuilder aParkingLotDTO() {
-            return new ParkingLotDTOBuilder();
-        }
 
         public ParkingLotDTOBuilder withParkingLotId(int parkingLotId) {
             this.parkingLotId = parkingLotId;

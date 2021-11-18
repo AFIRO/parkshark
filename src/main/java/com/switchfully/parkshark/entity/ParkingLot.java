@@ -4,7 +4,7 @@ package com.switchfully.parkshark.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ParkingLot")
+@Table(name = "parking_lot")
 public class ParkingLot {
 
     @Id
@@ -60,12 +60,6 @@ public class ParkingLot {
         private Employee employee;
         private Division division;
 
-        private ParkingLotBuilder() {
-        }
-
-        public static ParkingLotBuilder aParkingLot() {
-            return new ParkingLotBuilder();
-        }
 
         public ParkingLotBuilder withName(String name) {
             this.name = name;

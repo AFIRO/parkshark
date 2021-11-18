@@ -41,9 +41,10 @@ public class Member {
     @JoinColumn(name = "mem_lp_id")
     private LicensePlate licensePlate;
 
+
     @JoinColumn(name = "mem_msl_id")
     @Enumerated(EnumType.STRING)
-    private MembershipLevel membershipLevel;
+    private MembershipLevel  membershipLevel;
 
     public Member() {
 
