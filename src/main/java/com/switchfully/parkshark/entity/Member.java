@@ -5,14 +5,11 @@ import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.Objects;
 
-//Address en licenseplate entity nog nodig.
-
 @Entity
 @Table(name = "member")
 public class Member {
 
-
-    public enum MembershipLevel {BRONZE, SILVER, GOLD}
+    public enum MembershipLevel { BRONZE, SILVER, GOLD }
 
     @Id
     @SequenceGenerator(name = "member_mem_id_seq", sequenceName = "member_mem_id_seq", initialValue = 1, allocationSize = 1)
@@ -26,7 +23,7 @@ public class Member {
     @Column(name = "mem_lastname")
     private String lastName;
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mem_address_id")
     private Address address;
 
@@ -87,7 +84,6 @@ public class Member {
         private MembershipLevel membershipLevel;
 
 
-
         public Builder withFirstName(String firstName) {
             this.firstName = firstName;
             return this;
@@ -129,7 +125,7 @@ public class Member {
         }
 
         public Member build() {
-            return new Member(firstName,lastName,address,email,telephoneNumber,registrationDate, licensePlate, membershipLevel);
+            return new Member(firstName, lastName, address, email, telephoneNumber, registrationDate, licensePlate, membershipLevel);
         }
     }
 
