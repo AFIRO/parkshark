@@ -35,7 +35,7 @@ public class DivisionService {
     }
 
     public List<DivisionDTO> getAllDivisions() {
-        return divisionMapper.toDtoList((List<Division>) divisionRepository.findAll());
+        return divisionMapper.toDtoList(divisionRepository.findAll());
     }
 
     public DivisionDTO getDivision(int divisionid) {
