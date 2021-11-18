@@ -1,13 +1,13 @@
 package com.switchfully.parkshark.dto;
 
 public class MemberDTO {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String telephoneNumber;
-    private String email;
-    private String licensePlateNumber;
-    private String registrationDate;
+    private final String id;
+    private final String firstName;
+    private final String lastName;
+    private final String telephoneNumber;
+    private final String email;
+    private final String licensePlateNumber;
+    private final String registrationDate;
 
     public MemberDTO(String id, String firstName, String lastName, String telephoneNumber, String email, String licensePlateNumber, String registrationDate) {
         this.id = id;
@@ -18,7 +18,6 @@ public class MemberDTO {
         this.licensePlateNumber = licensePlateNumber;
         this.registrationDate = registrationDate;
     }
-
 
     public static class Builder {
         private String id;

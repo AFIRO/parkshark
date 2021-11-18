@@ -32,7 +32,6 @@ public class MemberService {
         this.repository = repository;
     }
 
-
     public MemberDTO createMember(CreateMemberDTO dto) {
         assertCorrectCreateMemberDTO(dto);
         var newMember = mapper.toEntity(dto);
@@ -41,14 +40,12 @@ public class MemberService {
         return mapper.toDTO(newMember);
     }
 
-
     public List<MemberDTO> getAllMembers() {
         return repository.findAll()
                 .stream()
                 .map(mapper::toDTO)
                 .collect(Collectors.toList());
     }
-
 
     public MemberDTO getSpecificMemberById(String id) {
         var returnedMember = repository.findMemberByMemberId(Integer.parseInt(id));
@@ -95,6 +92,5 @@ public class MemberService {
 
         return true;
     }
-
 
 }

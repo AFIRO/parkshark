@@ -14,7 +14,7 @@
     <name>parkshark</name>
     <description>parkshark</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
 
     </properties>
     <dependencies>
@@ -55,6 +55,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- needed for the SwitchSecure HomeMadeSecurity -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.18.2</version>
+        </dependency>
 
     </dependencies>
 
