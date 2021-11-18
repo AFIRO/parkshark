@@ -6,6 +6,7 @@ import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.entity.Employee;
 import com.switchfully.parkshark.mapper.DivisionMapper;
 import com.switchfully.parkshark.repository.DivisionRepository;
+import com.switchfully.parkshark.repository.EmployeeRepository;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,20 +24,22 @@ class DivisionServiceTest {
     @Autowired
     private DivisionService divisionService;
     private DivisionRepository divisionRepository;
+    private EmployeeRepository employeeRepository;
     @Autowired
     private DivisionMapper divisionMapper;
     private CreateDivisionDTO createDivisionDTO;
     private Division division;
     private DivisionDTO divisionDTO;
 
+
     @BeforeEach
     void before() {
         divisionRepository = Mockito.mock(DivisionRepository.class);
-        divisionService = new DivisionService(divisionRepository, divisionMapper);
+        divisionService = new DivisionService(divisionRepository, divisionMapper, employeeRepository);
         createDivisionDTO = new CreateDivisionDTO("name 1",
                 "original name 1",
-                new Employee(),
-                new Division());
+                1,
+                1);
         division = divisionMapper.toEntityDivision(createDivisionDTO);
         divisionDTO = divisionMapper.toDtoDivision(division);
     }

@@ -28,6 +28,25 @@ public class Address {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
 
     public Address(String street, String houseNumber, String zipcode, String city) {
         this.street = street;

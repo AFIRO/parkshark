@@ -27,6 +27,7 @@ public class MemberMapper {
                     .withLicensePlate(licensePlateMapper.toEntity(dto.getLicensePlateDTO()))
                     .withTelephoneNumber(dto.getTelephoneNumber())
                     .withMembershipLevel(Member.MembershipLevel.BRONZE)
+                    .withRegistrationDate(dto.getRegistrationDate())
                     .build();
         }
         return new Member.Builder()
@@ -37,6 +38,7 @@ public class MemberMapper {
                 .withLicensePlate(licensePlateMapper.toEntity(dto.getLicensePlateDTO()))
                 .withTelephoneNumber(dto.getTelephoneNumber())
                 .withMembershipLevel(dto.getMembershipLevel())
+                .withRegistrationDate(dto.getRegistrationDate())
                 .build();
     }
 
@@ -48,6 +50,7 @@ public class MemberMapper {
                 .withEmail(member.getEmail())
                 .withlicensePlateNumber(member.getLicensePlate().getLicensePlateNumber())
                 .withTelephoneNumber(member.getTelephoneNumber())
+                .withRegistrationDate(member.getRegistrationDate().toString())
                 .build();
     }
 }

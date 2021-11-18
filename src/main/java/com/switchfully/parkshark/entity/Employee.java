@@ -3,10 +3,12 @@ package com.switchfully.parkshark.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Employee")
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "employee_emp_id_seq", sequenceName = "employee_emp_id_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_emp_id_seq")
     @Column(name = "emp_id")
     private int id;
 
@@ -49,6 +51,41 @@ public class Employee {
         this.empTitle = empTitle;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEmpTitle() {
+        return empTitle;
+    }
 
     public static final class EmployeeBuilder {
         private String firstName;

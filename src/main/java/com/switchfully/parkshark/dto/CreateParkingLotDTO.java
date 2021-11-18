@@ -3,7 +3,6 @@ package com.switchfully.parkshark.dto;
 
 public class CreateParkingLotDTO {
 
-
     private final String name;
     private final int maxCapacity;
     private final double hourlyPrice;
@@ -50,60 +49,4 @@ public class CreateParkingLotDTO {
         return address;
     }
 
-
-    public static final class CreateParkingLotDTOBuilder {
-        private String name;
-        private int maxCapacity;
-        private double hourlyPrice;
-        private CreateCategoryDTO category;
-        private CreateAddressDTO address;
-        private CreateEmployeeDTO employee;
-        private CreateDivisionDTO division;
-
-        private CreateParkingLotDTOBuilder() {
-        }
-
-        public static CreateParkingLotDTOBuilder aCreateParkingLotDTO() {
-            return new CreateParkingLotDTOBuilder();
-        }
-
-        public CreateParkingLotDTOBuilder withName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public CreateParkingLotDTOBuilder withMaxCapacity(int maxCapacity) {
-            this.maxCapacity = maxCapacity;
-            return this;
-        }
-
-        public CreateParkingLotDTOBuilder withHourlyPrice(double hourlyPrice) {
-            this.hourlyPrice = hourlyPrice;
-            return this;
-        }
-
-        public CreateParkingLotDTOBuilder withCategory(CreateCategoryDTO category) {
-            this.category = category;
-            return this;
-        }
-
-        public CreateParkingLotDTOBuilder withAddress(CreateAddressDTO address) {
-            this.address = address;
-            return this;
-        }
-
-        public CreateParkingLotDTOBuilder withEmployee(CreateEmployeeDTO employee) {
-            this.employee = employee;
-            return this;
-        }
-
-        public CreateParkingLotDTOBuilder withDivision(CreateDivisionDTO division) {
-            this.division = division;
-            return this;
-        }
-
-        public CreateParkingLotDTO build() {
-            return new CreateParkingLotDTO(name, maxCapacity, hourlyPrice, category, address, employee, division);
-        }
-    }
 }

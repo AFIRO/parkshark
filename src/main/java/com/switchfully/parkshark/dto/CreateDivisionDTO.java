@@ -7,10 +7,10 @@ public class CreateDivisionDTO {
 
     private final String name;
     private final String originalName;
-    private final Employee director;
-    private final Division division;
+    private final Integer director;
+    private final Integer division;
 
-    public CreateDivisionDTO(String name, String originalName, Employee director, Division division) {
+    public CreateDivisionDTO(String name, String originalName, Integer director, Integer division) {
         this.name = name;
         this.originalName = originalName;
         this.director = director;
@@ -25,11 +25,11 @@ public class CreateDivisionDTO {
         return originalName;
     }
 
-    public Employee getDirector() {
+    public Integer getDirector() {
         return director;
     }
 
-    public Division getDivision() {
+    public Integer getDivision() {
         return division;
     }
 }
