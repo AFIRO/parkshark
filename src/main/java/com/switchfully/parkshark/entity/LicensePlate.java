@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "LicensePlate")
+@Table(name = "licensePlate")
 public class LicensePlate {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

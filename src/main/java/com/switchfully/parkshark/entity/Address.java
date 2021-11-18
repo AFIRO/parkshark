@@ -3,7 +3,7 @@ package com.switchfully.parkshark.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Address")
+@Table(name = "address")
 public class Address {
 
     @Id
