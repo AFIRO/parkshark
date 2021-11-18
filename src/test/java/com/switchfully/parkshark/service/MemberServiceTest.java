@@ -43,4 +43,10 @@ class MemberServiceTest {
         memberService.createMember(newMemberDTO);
         Mockito.verify(memberRepository).save(Mockito.any());
     }
+
+    @Test
+    void givenAMemberService_whenAskingForAllMembers_thenVerifyGetAllMembersWithRepository() {
+        memberService.getAllMembers();
+        Mockito.verify(memberRepository).findAll();
+    }
 }
