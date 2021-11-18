@@ -19,6 +19,34 @@ public class MemberDTO {
         this.registrationDate = registrationDate;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLicensePlateNumber() {
+        return licensePlateNumber;
+    }
+
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
     public static class Builder {
         private String id;
         private String firstName;
@@ -69,5 +97,7 @@ public class MemberDTO {
         }
 
     }
+
+
 
 }
