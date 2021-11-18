@@ -1,13 +1,17 @@
 package com.switchfully.parkshark.service;
 
+import com.switchfully.parkshark.dto.CreateAddressDTO;
 import com.switchfully.parkshark.dto.CreateParkingLotDTO;
 import com.switchfully.parkshark.dto.ParkingLotDTO;
 import com.switchfully.parkshark.entity.Category;
 import com.switchfully.parkshark.entity.ParkingLot;
+import com.switchfully.parkshark.exceptions.BadCreateAddressException;
 import com.switchfully.parkshark.exceptions.CategoryAlreadyExistsException;
 import com.switchfully.parkshark.mapper.ParkingLotMapper;
 import com.switchfully.parkshark.repository.CategoryRepository;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +27,7 @@ public class ParkingLotService {
     private final ParkingLotRepository parkingLotRepository;
     private final CategoryRepository categoryRepository;
     private final ParkingLotMapper parkingLotMapper;
+    private final Logger logger = LoggerFactory.getLogger(ParkingLotService.class);
 
     @Autowired
     public ParkingLotService(ParkingLotRepository parkingLotRepository, CategoryRepository categoryRepository, ParkingLotMapper parkingLotMapper) {
@@ -44,8 +49,8 @@ public class ParkingLotService {
         logger.info("attempting to create parkinglot...");
         ParkingLot parkingLot = parkingLotMapper.toEntity(createParkingLotDTO);
         assertThatCategoryDoesNotExistYet(parkingLot.getCategory().getCategoryName());
-        ParkingLot savedParkingLot = parkingLotRepository.save(parkingLot);
-        return parkingLotMapper.toDTO(savedParkingLot);
+        parkingLotRepository.save(parkingLot);
+        return parkingLotMapper.toDTO(parkingLot);
     }
 
     private void assertThatCategoryDoesNotExistYet(String categoryName) {
@@ -54,4 +59,33 @@ public class ParkingLotService {
             throw new CategoryAlreadyExistsException();
         }
     }
+
+    //start van mogelijke validatiecode. Afwerkingen indien tijd genoeg.
+
+//    private void assertValidCreateParkingLotDTO(CreateParkingLotDTO dto){
+//        var toCheck = checkValid(dto.getName()) || assertCorrectCreateAddressDTO(dto.getAddress())
+//    }
+
+//    private boolean checkValid(String input) {
+//        return !input.isBlank() && !input.isEmpty() && input != null;
+//    }
+//
+//    private boolean checkValid(int input) {
+//        return input> 0;
+//    }
+//
+//    private boolean checkValid(double input) {
+//        return input> 0;
+//    }
+//
+//    private boolean assertCorrectCreateAddressDTO(CreateAddressDTO dto) {
+//        var toCheck = checkValid(dto.getZipcode()) || checkValid(dto.getCity()) || checkValid(dto.getStreet()) || checkValid(dto.getHouseNumber());
+//
+//        if (!toCheck) {
+//            logger.error("Data provided for new member address invalid");
+//            throw new BadCreateAddressException();
+//        }
+//
+//        return true;
+//    }
 }

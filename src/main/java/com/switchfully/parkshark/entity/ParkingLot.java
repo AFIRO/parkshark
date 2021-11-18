@@ -26,15 +26,15 @@ public class ParkingLot {
     @JoinColumn(name = "pl_cat_id")
     private Category category;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pl_address_id")
     private Address parkingLotAddress;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pl_contact_id")
     private Employee employee;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pl_div_id")
     private Division division;
 

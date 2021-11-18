@@ -22,7 +22,7 @@ public class Employee {
     @Column(name = "emp_telephonenumber")
     private String telephoneNumber;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "emp_address")
     private Address address;
 

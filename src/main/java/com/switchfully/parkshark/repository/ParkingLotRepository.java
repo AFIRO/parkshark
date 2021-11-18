@@ -11,5 +11,5 @@ import java.util.List;
 @Transactional
 public interface ParkingLotRepository extends CrudRepository <ParkingLot, Integer>{
 
-
+    List<ParkingLot> findAll();
 }

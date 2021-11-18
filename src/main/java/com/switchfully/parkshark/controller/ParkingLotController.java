@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.GeneratedValue;
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/parkinglot")
 public class ParkingLotController {
@@ -22,11 +25,16 @@ public class ParkingLotController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    //@SecurityGuard
     public ParkingLotDTO createParkingLot(@RequestBody CreateParkingLotDTO createParkingLotDTO) {
         logger.info("Attempting to create parking lot.");
         return parkingLotService.createParkingLot(createParkingLotDTO);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<ParkingLotDTO> getAllParkingLots(){
+        logger.info("Attempting to get all parking lots.");
+        return parkingLotService.getAllLots();
+    }
 
 }
