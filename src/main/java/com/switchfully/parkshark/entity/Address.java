@@ -1,6 +1,7 @@
 package com.switchfully.parkshark.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "address")
@@ -53,6 +54,19 @@ public class Address {
         this.houseNumber = houseNumber;
         this.zipcode = zipcode;
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return id == address.id && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber) && Objects.equals(zipcode, address.zipcode) && Objects.equals(city, address.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, street, houseNumber, zipcode, city);
     }
 
     public static class Builder {

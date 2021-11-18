@@ -22,7 +22,8 @@ class MemberServiceTest {
     private MemberMapper memberMapper;
     private MemberRepository memberRepository;
     private Member newMember;
-    private CreateMemberDTO newMemberDTO;
+    private CreateMemberDTO createMemberDTO;
+    private MemberDTO newMemberDTO;
 
     @BeforeEach
     void before() {
@@ -30,23 +31,30 @@ class MemberServiceTest {
         memberService = new MemberService(memberMapper, memberRepository);
         CreateAddressDTO newAddressDTO = new CreateAddressDTO();
         CreateLicensePlateDTO newLicensePlateDTO = new CreateLicensePlateDTO();
-        newMemberDTO = new CreateMemberDTO();
-        newMemberDTO.setFirstName("John");
-        newMemberDTO.setLastName("Doe");
-        newMemberDTO.setAddress(newAddressDTO);
-        newMemberDTO.setLicensePlateDTO(newLicensePlateDTO);
-        newMember = memberMapper.toEntity(newMemberDTO);
+        createMemberDTO = new CreateMemberDTO();
+        createMemberDTO.setFirstName("John");
+        createMemberDTO.setLastName("Doe");
+        createMemberDTO.setAddress(newAddressDTO);
+        createMemberDTO.setLicensePlateDTO(newLicensePlateDTO);
+        newMember = memberMapper.toEntity(createMemberDTO);
+        newMemberDTO = memberMapper.toDTO(newMember);
     }
 
     @Test
     void givenAMemberService_whenSavingAMember_thenVerifySaveWithRepository() {
-        memberService.createMember(newMemberDTO);
+        memberService.createMember(createMemberDTO);
         Mockito.verify(memberRepository).save(Mockito.any());
+        // Mockito.verify(memberRepository).save(newMember);
     }
 
     @Test
     void givenAMemberService_whenAskingForAllMembers_thenVerifyGetAllMembersWithRepository() {
         memberService.getAllMembers();
         Mockito.verify(memberRepository).findAll();
+    }
+
+    @Test
+    void givenAMemberService_whenSavingAMember_thenReturnAsMemberDTO() {
+        Mockito.when(memberService.createMember(createMemberDTO)).thenReturn(newMemberDTO);
     }
 }

@@ -26,6 +26,19 @@ public class LicensePlate {
         this.licensePlateCountry = licensePlateCountry;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LicensePlate that = (LicensePlate) o;
+        return Objects.equals(licensePlateId, that.licensePlateId) && Objects.equals(licensePlateNumber, that.licensePlateNumber) && Objects.equals(licensePlateCountry, that.licensePlateCountry);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(licensePlateId, licensePlateNumber, licensePlateCountry);
+    }
+
     public static class Builder{
         private String licensePlateNumber;
         private String licensePlateCountry;
@@ -57,16 +70,4 @@ public class LicensePlate {
         return licensePlateCountry;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof LicensePlate)) return false;
-        LicensePlate that = (LicensePlate) o;
-        return Objects.equals(licensePlateId, that.licensePlateId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(licensePlateId);
-    }
 }
