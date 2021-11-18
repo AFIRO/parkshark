@@ -1,14 +1,10 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.CreateAddressDTO;
 import com.switchfully.parkshark.dto.CreateParkingLotDTO;
 import com.switchfully.parkshark.dto.ParkingLotDTO;
-import com.switchfully.parkshark.entity.Category;
 import com.switchfully.parkshark.entity.ParkingLot;
-import com.switchfully.parkshark.exceptions.BadCreateAddressException;
-import com.switchfully.parkshark.exceptions.CategoryAlreadyExistsException;
+import com.switchfully.parkshark.exceptions.NoSuchParkingLotException;
 import com.switchfully.parkshark.mapper.ParkingLotMapper;
-import com.switchfully.parkshark.repository.CategoryRepository;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,14 +21,12 @@ import java.util.stream.Collectors;
 public class ParkingLotService {
 
     private final ParkingLotRepository parkingLotRepository;
-    private final CategoryRepository categoryRepository;
     private final ParkingLotMapper parkingLotMapper;
     private final Logger logger = LoggerFactory.getLogger(ParkingLotService.class);
 
     @Autowired
-    public ParkingLotService(ParkingLotRepository parkingLotRepository, CategoryRepository categoryRepository, ParkingLotMapper parkingLotMapper) {
+    public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper) {
         this.parkingLotRepository = parkingLotRepository;
-        this.categoryRepository = categoryRepository;
         this.parkingLotMapper = parkingLotMapper;
     }
 
@@ -53,12 +47,15 @@ public class ParkingLotService {
         return parkingLotMapper.toDTO(parkingLot);
     }
 
-    private void assertThatCategoryDoesNotExistYet(String categoryName) {
-        Optional<Category> categoryPresent = categoryRepository.findByCategoryNameEquals(categoryName);
-        if(categoryPresent.isPresent()){
-            throw new CategoryAlreadyExistsException();
-        }
+    public ParkingLotDTO getSpecificLot(int id) {
+        logger.info("getting specific lot");
+        var toCheck = parkingLotRepository.findById(id);
+        if (toCheck.isEmpty())
+            throw new NoSuchParkingLotException();
+
+        return parkingLotMapper.toDTO(toCheck.get());
     }
+
 
     //start van mogelijke validatiecode. Afwerkingen indien tijd genoeg.
 

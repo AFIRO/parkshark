@@ -7,9 +7,11 @@ import javax.persistence.*;
 @Table(name = "parking_lot")
 public class ParkingLot {
 
+    public enum Category { UNDER_GROUND_BUILDING, ABOVE_GROUND_GROUND }
+
     @Id
-    @SequenceGenerator(name = "parkingLot_pl_id_seq", sequenceName = "parkingLot_pl_id_seq", initialValue = 1, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "parkingLot_pl_id_seq")
+    @SequenceGenerator(name = "parking_lot_pl_id_seq", sequenceName = "parking_lot_pl_id_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "parking_lot_pl_id_seq")
     @Column(name = "pl_id")
     private int parkingLotId;
 
@@ -22,8 +24,8 @@ public class ParkingLot {
     @Column(name = "pl_price_hour")
     private double hourlyPrice;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pl_cat_id")
+    @Column(name = "pl_category")
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @OneToOne(cascade = CascadeType.ALL)

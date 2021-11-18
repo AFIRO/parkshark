@@ -37,4 +37,11 @@ public class ParkingLotController {
         return parkingLotService.getAllLots();
     }
 
+    @GetMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ParkingLotDTO getSpecificParkingLot(@PathVariable int id){
+        logger.info("Attempting to get a specific parking lot.");
+        return parkingLotService.getSpecificLot(id);
+    }
+
 }

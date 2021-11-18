@@ -1,9 +1,9 @@
 package com.switchfully.parkshark.dto;
 
 import com.switchfully.parkshark.entity.Address;
-import com.switchfully.parkshark.entity.Category;
 import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.entity.Employee;
+import com.switchfully.parkshark.entity.ParkingLot;
 
 public class ParkingLotDTO {
 
@@ -43,7 +43,7 @@ public class ParkingLotDTO {
         return hourlyPrice;
     }
 
-    public Category getCategory() {
+    public ParkingLot.Category getCategory() {
         return category;
     }
 
@@ -90,7 +90,7 @@ public class ParkingLotDTO {
             return this;
         }
 
-        public ParkingLotDTOBuilder withCategory(Category category) {
+        public ParkingLotDTOBuilder withCategory(ParkingLot.Category category) {
             this.category = category;
             return this;
         }
