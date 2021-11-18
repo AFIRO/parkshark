@@ -54,12 +54,28 @@ public class Member {
         if (this == o) return true;
         if (!(o instanceof Member)) return false;
         Member member = (Member) o;
+        if (getMemberId() == null || member.getMemberId() == null) return false;
         return getMemberId().equals(member.getMemberId());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getMemberId());
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberId=" + memberId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address +
+                ", email='" + email + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", registrationDate=" + registrationDate +
+                ", licensePlate=" + licensePlate +
+                ", membershipLevel=" + membershipLevel +
+                '}';
     }
 
     public Member(String firstName, String lastName, Address address, String email, String telephoneNumber, LocalDate registrationDate, LicensePlate licensePlate, MembershipLevel membershipLevel) {

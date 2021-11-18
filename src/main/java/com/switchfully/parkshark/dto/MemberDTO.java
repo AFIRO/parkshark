@@ -1,7 +1,7 @@
 package com.switchfully.parkshark.dto;
 
 public class MemberDTO {
-    private final String id;
+    private final Integer id;
     private final String firstName;
     private final String lastName;
     private final String telephoneNumber;
@@ -9,7 +9,7 @@ public class MemberDTO {
     private final String licensePlateNumber;
     private final String registrationDate;
 
-    public MemberDTO(String id, String firstName, String lastName, String telephoneNumber, String email, String licensePlateNumber, String registrationDate) {
+    public MemberDTO(Integer id, String firstName, String lastName, String telephoneNumber, String email, String licensePlateNumber, String registrationDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -19,7 +19,7 @@ public class MemberDTO {
         this.registrationDate = registrationDate;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -48,7 +48,7 @@ public class MemberDTO {
     }
 
     public static class Builder {
-        private String id;
+        private Integer id;
         private String firstName;
         private String lastName;
         private String telephoneNumber;
@@ -57,7 +57,7 @@ public class MemberDTO {
         private String registrationDate;
 
 
-        public Builder withId(String id) {
+        public Builder withId(Integer id) {
             this.id = id;
             return this;
         }

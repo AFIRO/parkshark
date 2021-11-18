@@ -46,7 +46,7 @@ public class MemberMapper {
         return new MemberDTO.Builder()
                 .withFirstName(member.getFirstName())
                 .withLastName(member.getLastName())
-                .withId(member.getMemberId().toString())
+                .withId(member.getMemberId())
                 .withEmail(member.getEmail())
                 .withlicensePlateNumber(member.getLicensePlate().getLicensePlateNumber())
                 .withTelephoneNumber(member.getTelephoneNumber())
