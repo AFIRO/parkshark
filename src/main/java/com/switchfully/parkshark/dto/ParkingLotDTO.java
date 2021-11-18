@@ -1,9 +1,9 @@
 package com.switchfully.parkshark.dto;
 
 import com.switchfully.parkshark.entity.Address;
-import com.switchfully.parkshark.entity.Category;
 import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.entity.Employee;
+import com.switchfully.parkshark.entity.ParkingLot;
 
 public class ParkingLotDTO {
 
@@ -11,12 +11,12 @@ public class ParkingLotDTO {
     private final String name;
     private final int maxCapacity;
     private final double hourlyPrice;
-    private final Category category;
+    private final ParkingLot.Category category;
     private final Address parkingLotAddress;
     private final Employee employee;
     private final Division division;
 
-    public ParkingLotDTO(int parkingLotId, String name, int maxCapacity, double hourlyPrice, Category category, Address parkingLotAddress, Employee employee, Division division) {
+    public ParkingLotDTO(int parkingLotId, String name, int maxCapacity, double hourlyPrice, ParkingLot.Category category, Address parkingLotAddress, Employee employee, Division division) {
         this.parkingLotId = parkingLotId;
         this.name = name;
         this.maxCapacity = maxCapacity;
@@ -43,7 +43,7 @@ public class ParkingLotDTO {
         return hourlyPrice;
     }
 
-    public Category getCategory() {
+    public ParkingLot.Category getCategory() {
         return category;
     }
 
@@ -64,7 +64,7 @@ public class ParkingLotDTO {
         private String name;
         private int maxCapacity;
         private double hourlyPrice;
-        private Category category;
+        private ParkingLot.Category category;
         private Address parkingLotAddress;
         private Employee employee;
         private Division division;
@@ -90,7 +90,7 @@ public class ParkingLotDTO {
             return this;
         }
 
-        public ParkingLotDTOBuilder withCategory(Category category) {
+        public ParkingLotDTOBuilder withCategory(ParkingLot.Category category) {
             this.category = category;
             return this;
         }
