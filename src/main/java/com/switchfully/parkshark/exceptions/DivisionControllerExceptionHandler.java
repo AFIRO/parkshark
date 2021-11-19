@@ -18,4 +18,10 @@ public class DivisionControllerExceptionHandler extends ResponseEntityExceptionH
         logger.error(exception.getMessage());
         response.sendError(HttpStatus.FORBIDDEN.value(), exception.getMessage());
     }
+
+    @ExceptionHandler(BadCreateDivisionException.class)
+    protected void badCreateDivisionException(BadCreateDivisionException exception, HttpServletResponse response) throws Exception {
+        logger.error(exception.getMessage());
+        response.sendError(HttpStatus.FORBIDDEN.value(), exception.getMessage());
+    }
 }

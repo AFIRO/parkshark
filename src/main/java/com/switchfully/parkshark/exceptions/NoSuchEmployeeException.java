@@ -3,6 +3,7 @@ package com.switchfully.parkshark.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@ResponseStatus(HttpStatus.FORBIDDEN)
 public class NoSuchEmployeeException extends RuntimeException{
 
     private static final String INVALID_EMPLOYEE = "Not a valid employee.";
