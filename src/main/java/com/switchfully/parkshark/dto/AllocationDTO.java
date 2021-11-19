@@ -55,13 +55,6 @@ public class AllocationDTO {
         private LocalDateTime endHour;
         private Allocation.AllocationStatus status;
 
-        private Builder() {
-        }
-
-        public static Builder anAllocationDTO() {
-            return new Builder();
-        }
-
         public Builder withAllocationId(int allocationId) {
             this.allocationId = allocationId;
             return this;
