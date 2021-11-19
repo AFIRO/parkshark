@@ -7,7 +7,7 @@ import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.entity.ParkingLot;
-import com.switchfully.parkshark.exceptions.employee.NoSuchParkingLotException;
+import com.switchfully.parkshark.exceptions.parkinglot.NoSuchParkingLotException;
 import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.repository.MemberRepository;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
