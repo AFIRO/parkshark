@@ -7,8 +7,9 @@ import java.time.LocalDateTime;
 @Table(name = "allocation")
 public class Allocation {
 
-    public enum AllocationStatus{ACTIVE, STOPPED}
-    public enum AllocationSorter{ASCENDING, DESCENDING}
+    public enum AllocationStatus {ACTIVE, STOPPED}
+
+    public enum AllocationSorter {ASCENDING, DESCENDING}
 
     @Id
     @Column(name = "all_id")

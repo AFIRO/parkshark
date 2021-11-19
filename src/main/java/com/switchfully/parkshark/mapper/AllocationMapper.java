@@ -33,11 +33,9 @@ public class AllocationMapper {
     public Allocation toEntity(CreateAllocationDTO createAllocationDTO) {
 
         Member member = memberRepository.findMemberByMemberId(createAllocationDTO.getMemberId());
-
         ParkingLot parkingLot = parkingLotRepository.findParkingLotByParkingLotId(createAllocationDTO.getParkingLotId());
 
         if (member == null) throw new NoSuchMemberException();
-
         if (parkingLot == null) throw new NoSuchParkingLotException();
 
         return new Allocation.Builder()
