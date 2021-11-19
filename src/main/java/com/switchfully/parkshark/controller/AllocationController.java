@@ -46,9 +46,9 @@ public class AllocationController {
     @PutMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.CUSTOMER)
-    public AllocationDTO stopAllocation(@RequestParam int allocationId) {
+    public AllocationDTO stopAllocation(@RequestParam int allocationId, @RequestParam int memberId) {
         logger.info("Attempting to stop allocation.");
-        return allocationService.stopAllocation(allocationId);
+        return allocationService.stopAllocation(allocationId, memberId);
     }
 
 }
