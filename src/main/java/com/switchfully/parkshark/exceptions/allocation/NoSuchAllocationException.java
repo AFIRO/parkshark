@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.exceptions;
+package com.switchfully.parkshark.exceptions.allocation;
 
 public class NoSuchAllocationException extends RuntimeException {
 

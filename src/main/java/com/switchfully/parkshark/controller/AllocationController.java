@@ -28,9 +28,11 @@ public class AllocationController {
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public List<AllocationDTO> getAllAllocations(@RequestParam(required = false) Allocation.AllocationStatus status) {
+    public List<AllocationDTO> getAllAllocations(@RequestParam(required = false) Allocation.AllocationStatus filterStatus,
+                                                 @RequestParam(required = false) Integer maxResults,
+                                                 @RequestParam Allocation.AllocationSorter sort) {
         logger.info("Attempting to get all allocations.");
-        return allocationService.getAllAllocations();
+        return allocationService.getAllAllocations(filterStatus, maxResults, sort);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")

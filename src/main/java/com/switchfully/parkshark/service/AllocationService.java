@@ -9,7 +9,9 @@ import com.switchfully.parkshark.repository.AllocationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +37,7 @@ public class AllocationService {
         return allocationMapper.toDto(allocation);
     }
 
-    public AllocationDTO stopAllocation(int allocationId) {
+    public AllocationDTO stopAllocation(int allocationId, int memberId) {
         Allocation allocation = allocationRepository.findAllocationByAllocationId(allocationId);
 
         if (allocation == null) throw new NoSuchAllocationException();
