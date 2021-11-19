@@ -62,7 +62,7 @@ public class MemberService {
     }
 
     private boolean assertCorrectCreateMemberDTO(CreateMemberDTO createMemberDTO) {
-        var toCheck = checkValid(createMemberDTO.getFirstName()) || checkValid(createMemberDTO.getLastName()) || checkValid(createMemberDTO.getEmail()) || checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateNumber()) || checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateCountry()) || checkValid(createMemberDTO.getTelephoneNumber()) || assertCorrectCreateLicensePlateDTO(createMemberDTO.getLicensePlateDTO()) || assertCorrectCreateAddressDTO(createMemberDTO.getAddress());
+        var toCheck = checkValid(createMemberDTO.getFirstName()) && checkValid(createMemberDTO.getLastName()) && checkValid(createMemberDTO.getEmail()) && checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateNumber()) && checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateCountry()) && checkValid(createMemberDTO.getTelephoneNumber()) && assertCorrectCreateLicensePlateDTO(createMemberDTO.getLicensePlateDTO()) && assertCorrectCreateAddressDTO(createMemberDTO.getAddress());
 
         if (!toCheck) {
             logger.error("Data provided for new member invalid");
@@ -73,7 +73,7 @@ public class MemberService {
     }
 
     private boolean assertCorrectCreateAddressDTO(CreateAddressDTO dto) {
-        var toCheck = checkValid(dto.getZipcode()) || checkValid(dto.getCity()) || checkValid(dto.getStreet()) || checkValid(dto.getHouseNumber());
+        var toCheck = checkValid(dto.getZipcode()) && checkValid(dto.getCity()) && checkValid(dto.getStreet()) && checkValid(dto.getHouseNumber());
 
         if (!toCheck) {
             logger.error("Data provided for new member address invalid");
@@ -84,7 +84,7 @@ public class MemberService {
     }
 
     private boolean assertCorrectCreateLicensePlateDTO(CreateLicensePlateDTO dto) {
-        var toCheck = checkValid(dto.getLicensePlateCountry()) || checkValid(dto.getLicensePlateNumber());
+        var toCheck = checkValid(dto.getLicensePlateCountry()) && checkValid(dto.getLicensePlateNumber());
 
         if (!toCheck) {
             logger.error("Data provided for new member address invalid");

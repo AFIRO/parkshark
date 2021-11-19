@@ -8,7 +8,7 @@ import java.util.Objects;
 @Table(name = "parking_lot")
 public class ParkingLot {
 
-    public enum Category {UNDER_GROUND_BUILDING, ABOVE_GROUND_GROUND}
+    public enum Category {UNDER_GROUND_BUILDING, ABOVE_GROUND_BUILDING}
 
     @Id
     @SequenceGenerator(name = "parking_lot_pl_id_seq", sequenceName = "parking_lot_pl_id_seq", initialValue = 1, allocationSize = 1)

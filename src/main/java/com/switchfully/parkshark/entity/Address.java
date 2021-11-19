@@ -36,7 +36,7 @@ public class Address {
         this.city = city;
     }
 
-    public int getId() {
+    public int getAddressId() {
         return addressId;
     }
 

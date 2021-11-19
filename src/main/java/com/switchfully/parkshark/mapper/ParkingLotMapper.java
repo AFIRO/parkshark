@@ -26,7 +26,7 @@ public class ParkingLotMapper {
     }
 
     public ParkingLot toEntity(CreateParkingLotDTO createParkingLotDTO) {
-        var toCheckEmployee = employeeRepository.findById(createParkingLotDTO.getEmployee());
+        var toCheckEmployee = employeeRepository.findById(createParkingLotDTO.getContactPerson());
         var toCheckDivision = divisionRepository.findById(createParkingLotDTO.getDivision());
 
         if (toCheckDivision.isEmpty())

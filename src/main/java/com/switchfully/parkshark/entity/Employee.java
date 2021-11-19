@@ -52,7 +52,7 @@ public class Employee {
         this.empTitle = empTitle;
     }
 
-    public int getId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 

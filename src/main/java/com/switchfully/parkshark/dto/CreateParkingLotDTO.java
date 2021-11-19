@@ -10,16 +10,16 @@ public class CreateParkingLotDTO {
     private final double hourlyPrice;
     private final ParkingLot.Category category;
     private final CreateAddressDTO address;
-    private final Integer employee;
+    private final Integer contactPerson;
     private final Integer division;
 
-    private CreateParkingLotDTO(String name, int maxCapacity, double hourlyPrice, ParkingLot.Category category, CreateAddressDTO address, Integer employee, Integer division) {
+    private CreateParkingLotDTO(String name, int maxCapacity, double hourlyPrice, ParkingLot.Category category, CreateAddressDTO address, Integer contactPerson, Integer division) {
         this.name = name;
         this.maxCapacity = maxCapacity;
         this.hourlyPrice = hourlyPrice;
         this.category = category;
         this.address = address;
-        this.employee = employee;
+        this.contactPerson = contactPerson;
         this.division = division;
     }
 
@@ -39,8 +39,8 @@ public class CreateParkingLotDTO {
         return category;
     }
 
-    public Integer getEmployee() {
-        return employee;
+    public Integer getContactPerson() {
+        return contactPerson;
     }
 
     public Integer getDivision() {

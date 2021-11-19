@@ -5,22 +5,22 @@ import com.switchfully.parkshark.entity.Employee;
 
 public class DivisionDTO {
 
-    private final int id;
+    private final int divisionId;
     private final String name;
     private final String originalName;
-    private final Employee employee;
-    private final Division division;
+    private final Employee director;
+    private final Division upperDivision;
 
-    public DivisionDTO(int id, String name, String originalName, Employee employee, Division division) {
-        this.id = id;
+    public DivisionDTO(int divisionId, String name, String originalName, Employee director, Division upperDivision) {
+        this.divisionId = divisionId;
         this.name = name;
         this.originalName = originalName;
-        this.employee = employee;
-        this.division = division;
+        this.director = director;
+        this.upperDivision = upperDivision;
     }
 
-    public int getId() {
-        return id;
+    public int getDivisionId() {
+        return divisionId;
     }
 
     public String getName() {
@@ -31,12 +31,12 @@ public class DivisionDTO {
         return originalName;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Employee getDirector() {
+        return director;
     }
 
-    public Division getDivision() {
-        return division;
+    public Division getUpperDivision() {
+        return upperDivision;
     }
 
 
