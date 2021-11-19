@@ -24,11 +24,12 @@ class MemberServiceTest {
     private Member newMember;
     private CreateMemberDTO createMemberDTO;
     private MemberDTO newMemberDTO;
+    private ValidationService validation;
 
     @BeforeEach
     void before() {
         memberRepository = Mockito.mock(MemberRepository.class);
-        memberService = new MemberService(memberMapper, memberRepository);
+        memberService = new MemberService(memberMapper, memberRepository, validation);
         CreateAddressDTO newAddressDTO = new CreateAddressDTO("testStreet", "1", "2000", "Brussels");
         CreateLicensePlateDTO newLicensePlateDTO = new CreateLicensePlateDTO("1", "1");
         createMemberDTO = new CreateMemberDTO();
