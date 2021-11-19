@@ -9,6 +9,8 @@ import com.switchfully.parkshark.exceptions.NoSuchEmployeeException;
 import com.switchfully.parkshark.mapper.DivisionMapper;
 import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,42 +23,44 @@ public class DivisionService {
     private final DivisionRepository divisionRepository;
     private final EmployeeRepository employeeRepository;
     private final DivisionMapper divisionMapper;
+    private final ValidationService validation;
+    private final Logger logger = LoggerFactory.getLogger(DivisionService.class);
 
-    public DivisionService(DivisionRepository divisionRepository, DivisionMapper divisionMapper, EmployeeRepository employeeRepository) {
+    public DivisionService(DivisionRepository divisionRepository, DivisionMapper divisionMapper, EmployeeRepository employeeRepository, ValidationService validation) {
         this.divisionRepository = divisionRepository;
         this.divisionMapper = divisionMapper;
         this.employeeRepository = employeeRepository;
+        this.validation = validation;
     }
 
     public DivisionDTO createDivision(CreateDivisionDTO createDivisionDTO) {
-        if(createDivisionDTO == null){
-            throw new InvalidInputException();
-        }
+        validation.assertCorrectCreateDivisionDTO(createDivisionDTO);
+
         if(createDivisionDTO.getUpperDivision() != null){
             if(divisionRepository.findById(createDivisionDTO.getUpperDivision()).isEmpty()){
                 throw new NoSuchDivisionException();
             }
         }
-
         if(employeeRepository.findById(createDivisionDTO.getDirector()).isEmpty()){
             throw new NoSuchEmployeeException();
         }
 
-        Division division = divisionMapper.toEntity(createDivisionDTO);
-        divisionRepository.save(division);
-        return divisionMapper.toDto(division);
+        var newDivision = divisionMapper.toEntity(createDivisionDTO);
+        logger.info("Data for create member valid");
+        divisionRepository.save(newDivision);
+        return divisionMapper.toDto(newDivision);
     }
 
     public List<DivisionDTO> getAllDivisions() {
         return divisionMapper.toDto(divisionRepository.findAll());
     }
 
-    public DivisionDTO getSpecificDivisionById(int divisionid) {
-        var returnedDivision = divisionRepository.findByDivisionId(divisionid);
+    public DivisionDTO getSpecificDivisionById(int divisionId) {
+        var returnedDivision = divisionRepository.findByDivisionId(divisionId);
         if (returnedDivision == null) {
-//            logger.error("Non-existent member requested");
+            logger.error("Non-existent division requested");
             throw new NoSuchDivisionException();
         }
-        return divisionMapper.toDto(divisionRepository.findByDivisionId(divisionid));
+        return divisionMapper.toDto(divisionRepository.findByDivisionId(divisionId));
     }
 }

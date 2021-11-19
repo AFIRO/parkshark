@@ -1,9 +1,11 @@
 package com.switchfully.parkshark.service;
 
 import com.switchfully.parkshark.dto.CreateAddressDTO;
+import com.switchfully.parkshark.dto.CreateDivisionDTO;
 import com.switchfully.parkshark.dto.CreateLicensePlateDTO;
 import com.switchfully.parkshark.dto.CreateMemberDTO;
 import com.switchfully.parkshark.exceptions.BadCreateAddressException;
+import com.switchfully.parkshark.exceptions.BadCreateDivisionException;
 import com.switchfully.parkshark.exceptions.BadCreateLicensePlateException;
 import com.switchfully.parkshark.exceptions.BadCreateMemberException;
 import org.slf4j.Logger;
@@ -46,6 +48,17 @@ public class ValidationService {
         if (!toCheck) {
             logger.error("Data provided for new member address invalid");
             throw new BadCreateLicensePlateException();
+        }
+
+        return true;
+    }
+
+    public boolean assertCorrectCreateDivisionDTO(CreateDivisionDTO dto) {
+        var toCheck = checkValid(dto.getName()) && checkValid(dto.getOriginalName());
+
+        if (!toCheck) {
+            logger.error("Data provided for new Division invalid");
+            throw new BadCreateDivisionException();
         }
 
         return true;

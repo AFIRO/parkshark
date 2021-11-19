@@ -17,7 +17,7 @@ import java.util.List;
 public class DivisionController {
 
     private final DivisionService divisionService;
-    private final Logger logger = LoggerFactory.getLogger(ParkingLotController.class);
+    private final Logger logger = LoggerFactory.getLogger(DivisionController.class);
 
     @Autowired
     public DivisionController(DivisionService divisionService) {

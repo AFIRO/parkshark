@@ -18,6 +18,7 @@ class DivisionServiceTest {
     private DivisionService divisionService;
     private DivisionRepository divisionRepository;
     private EmployeeRepository employeeRepository;
+    private ValidationService validationService;
 
     private DivisionMapper divisionMapper;
     private CreateDivisionDTO createDivisionDTO;
@@ -30,7 +31,9 @@ class DivisionServiceTest {
         divisionRepository = Mockito.mock(DivisionRepository.class);
         employeeRepository = Mockito.mock(EmployeeRepository.class);
         divisionMapper = Mockito.mock(DivisionMapper.class);
-        divisionService = new DivisionService(divisionRepository, divisionMapper, employeeRepository);
+        validationService = Mockito.mock(ValidationService.class);
+
+        divisionService = new DivisionService(divisionRepository, divisionMapper, employeeRepository, validationService);
 //        createDivisionDTO = new CreateDivisionDTO("name 1",
 //                "original name 1",
 //                1,
