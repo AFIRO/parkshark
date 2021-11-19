@@ -1,6 +1,7 @@
 package com.switchfully.parkshark.repository;
 
-import com.switchfully.parkshark.entity.Division;
+import com.switchfully.parkshark.entity.Allocation;
+import com.switchfully.parkshark.entity.ParkingLot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,39 +11,42 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class DivisionRepositoryTest {
+class AllocationRepositoryTest {
 
     @Autowired
-    private DivisionRepository divisionRepository;
+    private AllocationRepository allocationRepositoryTest;
 
     @BeforeAll
     void setUp() {
-        divisionRepository.save(new Division());
+        allocationRepositoryTest.save(new Allocation());
 
     }
 
 
     @Test
-    public void findAll() {
-        var toCheck = divisionRepository.findAll().size();
+    public void findAll(){
+        var toCheck = allocationRepositoryTest.findAll().size();
         Assertions.assertEquals(1, toCheck);
 
+
     }
 
     @Test
-    public void findById() {
-        var toCheck = divisionRepository.findByDivisionId(1);
+    public void findById(){
+        var toCheck = allocationRepositoryTest.findById(1);
         Assertions.assertNotNull(toCheck);
 
     }
 
     @Test
-    public void save() {
-        divisionRepository.save(new Division());
-        var toCheck = divisionRepository.findAll().size();
+    public void save(){
+        allocationRepositoryTest.save(new Allocation());
+        var toCheck = allocationRepositoryTest.findAll().size();
         Assertions.assertEquals(2, toCheck);
 
     }
+
+
 
 
 }
