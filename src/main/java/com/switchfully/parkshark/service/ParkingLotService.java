@@ -4,7 +4,7 @@ import com.switchfully.parkshark.dto.parkinglot.CreateParkingLotDTO;
 import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.dto.parkinglot.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.entity.ParkingLot;
-import com.switchfully.parkshark.exceptions.NoSuchParkingLotException;
+import com.switchfully.parkshark.exceptions.employee.NoSuchParkingLotException;
 import com.switchfully.parkshark.mapper.ParkingLotMapper;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
 import org.slf4j.Logger;

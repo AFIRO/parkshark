@@ -5,7 +5,7 @@ import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.dto.parkinglot.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.entity.ParkingLot;
 import com.switchfully.parkshark.exceptions.division.NoSuchDivisionException;
-import com.switchfully.parkshark.exceptions.NoSuchEmployeeException;
+import com.switchfully.parkshark.exceptions.employee.NoSuchEmployeeException;
 import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;

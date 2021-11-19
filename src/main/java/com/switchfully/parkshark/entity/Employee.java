@@ -1,7 +1,6 @@
 package com.switchfully.parkshark.entity;
 
-import com.switchfully.parkshark.exceptions.BadCreateEmployeeException;
-import com.switchfully.parkshark.exceptions.member.BadCreateMemberException;
+import com.switchfully.parkshark.exceptions.employee.BadCreateEmployeeException;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;

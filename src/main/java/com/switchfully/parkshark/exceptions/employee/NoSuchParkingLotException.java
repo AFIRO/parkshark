@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.exceptions;
+package com.switchfully.parkshark.exceptions.employee;
 
 public class NoSuchParkingLotException extends RuntimeException {
     private static final String NO_SUCH_PARKING_LOT = "The requested parking lot is not in our database";

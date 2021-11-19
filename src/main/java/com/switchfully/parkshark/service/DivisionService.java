@@ -3,7 +3,7 @@ package com.switchfully.parkshark.service;
 import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
 import com.switchfully.parkshark.dto.division.DivisionDTO;
 import com.switchfully.parkshark.exceptions.division.NoSuchDivisionException;
-import com.switchfully.parkshark.exceptions.NoSuchEmployeeException;
+import com.switchfully.parkshark.exceptions.employee.NoSuchEmployeeException;
 import com.switchfully.parkshark.mapper.DivisionMapper;
 import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;
