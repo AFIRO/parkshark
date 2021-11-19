@@ -42,7 +42,7 @@ public class DivisionServiceIntegrationTest {
         //given
         CreateDivisionDTO test = new CreateDivisionDTO("test","test",1, 1);
         Division testUpperDivision = new Division();
-        Employee testEmployee = new Employee.Builder().withFirstName("test").withLastName("test").build();
+        Employee testEmployee = new Employee.Builder().withFirstName("test").withLastName("test").withEmail("test@test.be").build();
         Mockito.when(divisionRepositoryMock.findByDivisionId(1)).thenReturn(testUpperDivision);
         Mockito.when(EmployeeRepositoryMock.findByEmployeeId(1)).thenReturn(testEmployee);
         Mockito.when(employeeMapperMock.toDtoEmployeeUpperDivision(testEmployee)).thenReturn(new EmployeeUpperDivisionDTO(1,"test","test"));
