@@ -1,10 +1,8 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.CreateDivisionDTO;
-import com.switchfully.parkshark.dto.DivisionDTO;
-import com.switchfully.parkshark.entity.Division;
-import com.switchfully.parkshark.exceptions.InvalidInputException;
-import com.switchfully.parkshark.exceptions.NoSuchDivisionException;
+import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
+import com.switchfully.parkshark.dto.division.DivisionDTO;
+import com.switchfully.parkshark.exceptions.division.NoSuchDivisionException;
 import com.switchfully.parkshark.exceptions.NoSuchEmployeeException;
 import com.switchfully.parkshark.mapper.DivisionMapper;
 import com.switchfully.parkshark.repository.DivisionRepository;

@@ -1,8 +1,8 @@
 package com.switchfully.parkshark.mapper;
 
-import com.switchfully.parkshark.dto.CreateDivisionDTO;
-import com.switchfully.parkshark.dto.DivisionDTO;
-import com.switchfully.parkshark.dto.UpperDivisionDTO;
+import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
+import com.switchfully.parkshark.dto.division.DivisionDTO;
+import com.switchfully.parkshark.dto.division.UpperDivisionDTO;
 import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;

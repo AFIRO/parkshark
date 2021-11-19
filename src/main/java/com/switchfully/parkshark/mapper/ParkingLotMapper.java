@@ -1,10 +1,10 @@
 package com.switchfully.parkshark.mapper;
 
-import com.switchfully.parkshark.dto.CreateParkingLotDTO;
-import com.switchfully.parkshark.dto.ParkingLotDTO;
-import com.switchfully.parkshark.dto.ShortenedParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.CreateParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.entity.ParkingLot;
-import com.switchfully.parkshark.exceptions.NoSuchDivisionException;
+import com.switchfully.parkshark.exceptions.division.NoSuchDivisionException;
 import com.switchfully.parkshark.exceptions.NoSuchEmployeeException;
 import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;

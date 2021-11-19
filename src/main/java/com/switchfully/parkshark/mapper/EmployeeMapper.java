@@ -1,9 +1,9 @@
 package com.switchfully.parkshark.mapper;
 
 
-import com.switchfully.parkshark.dto.CreateEmployeeDTO;
-import com.switchfully.parkshark.dto.EmployeeDTO;
-import com.switchfully.parkshark.dto.EmployeeUpperDivisionDTO;
+import com.switchfully.parkshark.dto.employee.CreateEmployeeDTO;
+import com.switchfully.parkshark.dto.employee.EmployeeDTO;
+import com.switchfully.parkshark.dto.employee.EmployeeUpperDivisionDTO;
 import com.switchfully.parkshark.entity.Employee;
 import org.springframework.stereotype.Component;
 

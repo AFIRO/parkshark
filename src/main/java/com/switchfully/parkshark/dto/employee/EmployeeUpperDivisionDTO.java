@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.employee;
 
 public class EmployeeUpperDivisionDTO {
 

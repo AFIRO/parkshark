@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.exceptions;
+package com.switchfully.parkshark.exceptions.member;
 
 public class BadCreateLicensePlateException extends RuntimeException {
     public static final String DEFAULT_MESSAGE = "Input for creating a License Plate invalid";

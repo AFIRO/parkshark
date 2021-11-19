@@ -1,5 +1,7 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.member;
 
+import com.switchfully.parkshark.dto.CreateAddressDTO;
+import com.switchfully.parkshark.dto.CreateLicensePlateDTO;
 import com.switchfully.parkshark.entity.Member;
 
 import java.time.LocalDate;
