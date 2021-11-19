@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.address;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

@@ -1,5 +1,8 @@
 package com.switchfully.parkshark.dto.parkinglot;
 
+import com.switchfully.parkshark.dto.address.AddressDTO;
+import com.switchfully.parkshark.dto.division.DivisionDTO;
+import com.switchfully.parkshark.dto.employee.EmployeeDTO;
 import com.switchfully.parkshark.entity.Address;
 import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.entity.Employee;
@@ -12,11 +15,11 @@ public class ParkingLotDTO {
     private final int maxCapacity;
     private final double hourlyPrice;
     private final ParkingLot.Category category;
-    private final Address parkingLotAddress;
-    private final Employee employee;
-    private final Division division;
+    private final AddressDTO parkingLotAddress;
+    private final EmployeeDTO employee;
+    private final DivisionDTO division;
 
-    public ParkingLotDTO(int parkingLotId, String name, int maxCapacity, double hourlyPrice, ParkingLot.Category category, Address parkingLotAddress, Employee employee, Division division) {
+    public ParkingLotDTO(int parkingLotId, String name, int maxCapacity, double hourlyPrice, ParkingLot.Category category, AddressDTO parkingLotAddress, EmployeeDTO employee, DivisionDTO division) {
         this.parkingLotId = parkingLotId;
         this.name = name;
         this.maxCapacity = maxCapacity;
@@ -47,15 +50,15 @@ public class ParkingLotDTO {
         return category;
     }
 
-    public Address getParkingLotAddress() {
+    public AddressDTO getParkingLotAddress() {
         return parkingLotAddress;
     }
 
-    public Employee getEmployee() {
+    public EmployeeDTO getEmployee() {
         return employee;
     }
 
-    public Division getDivision() {
+    public DivisionDTO getDivision() {
         return division;
     }
 
@@ -65,9 +68,9 @@ public class ParkingLotDTO {
         private int maxCapacity;
         private double hourlyPrice;
         private ParkingLot.Category category;
-        private Address parkingLotAddress;
-        private Employee employee;
-        private Division division;
+        private AddressDTO parkingLotAddress;
+        private EmployeeDTO employee;
+        private DivisionDTO division;
 
 
         public Builder withParkingLotId(int parkingLotId) {
@@ -95,17 +98,17 @@ public class ParkingLotDTO {
             return this;
         }
 
-        public Builder withParkingLotAddress(Address parkingLotAddress) {
+        public Builder withParkingLotAddress(AddressDTO parkingLotAddress) {
             this.parkingLotAddress = parkingLotAddress;
             return this;
         }
 
-        public Builder withEmployee(Employee employee) {
+        public Builder withEmployee(EmployeeDTO employee) {
             this.employee = employee;
             return this;
         }
 
-        public Builder withDivision(Division division) {
+        public Builder withDivision(DivisionDTO division) {
             this.division = division;
             return this;
         }

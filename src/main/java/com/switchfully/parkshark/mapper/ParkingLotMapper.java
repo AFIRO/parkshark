@@ -17,12 +17,16 @@ public class ParkingLotMapper {
     private final AddressMapper addressMapper;
     private final EmployeeRepository employeeRepository;
     private final DivisionRepository divisionRepository;
+    private final DivisionMapper divisionMapper;
+    private final EmployeeMapper employeeMapper;
 
     @Autowired
-    public ParkingLotMapper(AddressMapper addressMapper, EmployeeRepository employeeRepository, DivisionRepository divisionRepository) {
+    public ParkingLotMapper(AddressMapper addressMapper, EmployeeRepository employeeRepository, DivisionRepository divisionRepository, DivisionMapper divisionMapper, EmployeeMapper employeeMapper) {
         this.addressMapper = addressMapper;
         this.employeeRepository = employeeRepository;
         this.divisionRepository = divisionRepository;
+        this.divisionMapper = divisionMapper;
+        this.employeeMapper = employeeMapper;
     }
 
     public ParkingLot toEntity(CreateParkingLotDTO createParkingLotDTO) {
@@ -55,9 +59,9 @@ public class ParkingLotMapper {
                 .withMaxCapacity(parkingLot.getMaxCapacity())
                 .withHourlyPrice(parkingLot.getHourlyPrice())
                 .withCategory(parkingLot.getCategory())
-                .withParkingLotAddress(parkingLot.getParkingLotAddress())
-                .withEmployee(parkingLot.getEmployee())
-                .withDivision(parkingLot.getDivision())
+                .withParkingLotAddress(addressMapper.toDto(parkingLot.getParkingLotAddress()))
+                .withEmployee(employeeMapper.toDto(parkingLot.getEmployee()))
+                .withDivision(divisionMapper.toDto(parkingLot.getDivision()))
                 .build();
     }
 

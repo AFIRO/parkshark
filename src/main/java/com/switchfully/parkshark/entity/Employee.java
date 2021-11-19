@@ -1,5 +1,10 @@
 package com.switchfully.parkshark.entity;
 
+import com.switchfully.parkshark.exceptions.BadCreateEmployeeException;
+import com.switchfully.parkshark.exceptions.member.BadCreateMemberException;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -48,7 +53,7 @@ public class Employee {
         this.telephoneNumber = telephoneNumber;
         this.address = address;
         this.parkingLot = parkingLot;
-        this.email = email;
+        this.email = isValidEmailAddress(email);
         this.empTitle = empTitle;
     }
 
@@ -94,6 +99,16 @@ public class Employee {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
         return employeeId == employee.employeeId;
+    }
+
+    public String isValidEmailAddress(String email) {
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            throw new BadCreateEmployeeException();
+        }
+        return email;
     }
 
     @Override

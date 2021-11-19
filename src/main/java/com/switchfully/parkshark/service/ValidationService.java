@@ -1,6 +1,6 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.CreateAddressDTO;
+import com.switchfully.parkshark.dto.address.CreateAddressDTO;
 import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
 import com.switchfully.parkshark.dto.CreateLicensePlateDTO;
 import com.switchfully.parkshark.dto.member.CreateMemberDTO;
