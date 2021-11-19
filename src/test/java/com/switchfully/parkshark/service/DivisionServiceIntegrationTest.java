@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DivisionServiceIntegrationTest {
@@ -55,6 +57,28 @@ public class DivisionServiceIntegrationTest {
         //then
         Mockito.verify(divisionRepositoryMock).save(temp);
         Assertions.assertEquals(toCheck.getName(), toCheckAgainst.getName());
+    }
+
+    @Test
+    void whenFindAllCalled_returnEmptyListAndCallRepo(){
+        Mockito.when(divisionRepositoryMock.findAll()).thenReturn(new ArrayList<>());
+        var toCheck = divisionService.getAllDivisions().size();
+
+        Mockito.verify(divisionRepositoryMock).findAll();
+        Assertions.assertEquals(0,toCheck);
+
+    }
+
+    @Test
+    void whenFindSpecificIsCalled_expectedObjectisReturned(){
+        var testDivision = new Division("test","test",new Employee(),new Division());
+        Mockito.when(divisionRepositoryMock.findByDivisionId(1)).thenReturn(testDivision);
+        var toCheckAgainst = divisionService.getSpecificDivisionById(1);
+        var toCheck = divisionMapper.toDto(testDivision);
+
+        //Mockito.verify(divisionRepositoryMock).findByDivisionId(1);
+        Assertions.assertEquals(toCheck.getName(),toCheckAgainst.getName());
+
     }
 
 

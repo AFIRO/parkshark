@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -50,7 +51,10 @@ public class DivisionService {
     }
 
     public List<DivisionDTO> getAllDivisions() {
-        return divisionMapper.toDto(divisionRepository.findAll());
+        return divisionRepository.findAll()
+                .stream()
+                .map(divisionMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public DivisionDTO getSpecificDivisionById(int divisionId) {

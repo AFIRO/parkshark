@@ -24,9 +24,6 @@ public class DivisionMapper {
         this.employeeMapper = employeeMapper;
     }
 
-    public List<DivisionDTO> toDto(List<Division> divisionList) {
-        return divisionList.stream().map(this::toDto).collect(Collectors.toList());
-    }
 
     public Division toEntity(CreateDivisionDTO createDivisionDTO) {
         if(createDivisionDTO.getUpperDivision() != null){
