@@ -36,8 +36,7 @@ public class Allocation {
     public Allocation() {
     }
 
-    public Allocation(int allocationId, Member member, ParkingLot parkingLot, LocalDateTime startHour, LocalDateTime endHour, AllocationStatus status) {
-        this.allocationId = allocationId;
+    public Allocation(Member member, ParkingLot parkingLot, LocalDateTime startHour, LocalDateTime endHour, AllocationStatus status) {
         this.member = member;
         this.parkingLot = parkingLot;
         this.startHour = startHour;
@@ -49,11 +48,11 @@ public class Allocation {
         return allocationId;
     }
 
-    public Member getMemberId() {
+    public Member getMember() {
         return member;
     }
 
-    public ParkingLot getParkingLotId() {
+    public ParkingLot getParkingLot() {
         return parkingLot;
     }
 
@@ -69,18 +68,17 @@ public class Allocation {
         return status;
     }
 
+    public void stop() {
+        status = AllocationStatus.STOPPED;
+        endHour = LocalDateTime.now();
+    }
+
     public static final class Builder {
-        int allocationId;
         Member member;
         ParkingLot parkingLot;
         LocalDateTime startHour;
         LocalDateTime endHour;
         private AllocationStatus status;
-
-        public Builder withAllocationId(int allocationId) {
-            this.allocationId = allocationId;
-            return this;
-        }
 
         public Builder withMember(Member member) {
             this.member = member;
@@ -108,7 +106,7 @@ public class Allocation {
         }
 
         public Allocation build() {
-            return new Allocation(allocationId, member, parkingLot, startHour, endHour, status);
+            return new Allocation(member, parkingLot, startHour, endHour, status);
         }
     }
 }
