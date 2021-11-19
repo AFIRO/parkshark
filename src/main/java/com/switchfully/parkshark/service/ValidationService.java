@@ -2,7 +2,7 @@ package com.switchfully.parkshark.service;
 
 import com.switchfully.parkshark.dto.address.CreateAddressDTO;
 import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
-import com.switchfully.parkshark.dto.CreateLicensePlateDTO;
+import com.switchfully.parkshark.dto.licenseplate.CreateLicensePlateDTO;
 import com.switchfully.parkshark.dto.member.CreateMemberDTO;
 import com.switchfully.parkshark.exceptions.member.BadCreateAddressException;
 import com.switchfully.parkshark.exceptions.division.BadCreateDivisionException;

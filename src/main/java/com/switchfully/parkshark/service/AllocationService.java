@@ -1,7 +1,7 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.AllocationDTO;
-import com.switchfully.parkshark.dto.CreateAllocationDTO;
+import com.switchfully.parkshark.dto.allocation.AllocationDTO;
+import com.switchfully.parkshark.dto.allocation.CreateAllocationDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.exceptions.allocation.AllocationAlreadyStoppedException;

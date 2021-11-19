@@ -1,7 +1,7 @@
 package com.switchfully.parkshark.controller;
 
-import com.switchfully.parkshark.dto.AllocationDTO;
-import com.switchfully.parkshark.dto.CreateAllocationDTO;
+import com.switchfully.parkshark.dto.allocation.AllocationDTO;
+import com.switchfully.parkshark.dto.allocation.CreateAllocationDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.service.AllocationService;
 import com.switchfully.parkshark.switchsecure.SecurityGuard;

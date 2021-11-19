@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.allocation;
 
 import com.switchfully.parkshark.dto.member.MemberDTO;
 import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;

@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.licenseplate;
 
 public class CreateLicensePlateDTO {
     private String licensePlateNumber;

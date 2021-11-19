@@ -1,7 +1,7 @@
 package com.switchfully.parkshark.mapper;
 
-import com.switchfully.parkshark.dto.AllocationDTO;
-import com.switchfully.parkshark.dto.CreateAllocationDTO;
+import com.switchfully.parkshark.dto.allocation.AllocationDTO;
+import com.switchfully.parkshark.dto.allocation.CreateAllocationDTO;
 import com.switchfully.parkshark.dto.member.MemberDTO;
 import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.entity.Allocation;
