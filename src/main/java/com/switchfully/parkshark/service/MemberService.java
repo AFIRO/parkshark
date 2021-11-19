@@ -1,8 +1,8 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.CreateMemberDTO;
-import com.switchfully.parkshark.dto.MemberDTO;
-import com.switchfully.parkshark.exceptions.NoSuchMemberException;
+import com.switchfully.parkshark.dto.member.CreateMemberDTO;
+import com.switchfully.parkshark.dto.member.MemberDTO;
+import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.mapper.MemberMapper;
 import com.switchfully.parkshark.repository.MemberRepository;
 import org.slf4j.Logger;

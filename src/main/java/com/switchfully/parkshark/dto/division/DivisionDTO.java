@@ -1,7 +1,6 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.division;
 
-import com.switchfully.parkshark.entity.Division;
-import com.switchfully.parkshark.entity.Employee;
+import com.switchfully.parkshark.dto.employee.EmployeeDTO;
 
 public class DivisionDTO {
 

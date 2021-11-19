@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.division;
 
 public class CreateDivisionDTO {
 

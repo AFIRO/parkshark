@@ -1,8 +1,8 @@
 package com.switchfully.parkshark.service;
 
-import com.switchfully.parkshark.dto.CreateParkingLotDTO;
-import com.switchfully.parkshark.dto.ParkingLotDTO;
-import com.switchfully.parkshark.dto.ShortenedParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.CreateParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.entity.ParkingLot;
 import com.switchfully.parkshark.exceptions.NoSuchParkingLotException;
 import com.switchfully.parkshark.mapper.ParkingLotMapper;

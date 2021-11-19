@@ -1,5 +1,7 @@
 package com.switchfully.parkshark.dto;
 
+import com.switchfully.parkshark.dto.member.MemberDTO;
+import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.entity.Allocation;
 
 import java.time.LocalDateTime;

@@ -1,13 +1,13 @@
 package com.switchfully.parkshark.service;
 
 import com.switchfully.parkshark.dto.CreateAddressDTO;
-import com.switchfully.parkshark.dto.CreateDivisionDTO;
+import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
 import com.switchfully.parkshark.dto.CreateLicensePlateDTO;
-import com.switchfully.parkshark.dto.CreateMemberDTO;
-import com.switchfully.parkshark.exceptions.BadCreateAddressException;
-import com.switchfully.parkshark.exceptions.BadCreateDivisionException;
-import com.switchfully.parkshark.exceptions.BadCreateLicensePlateException;
-import com.switchfully.parkshark.exceptions.BadCreateMemberException;
+import com.switchfully.parkshark.dto.member.CreateMemberDTO;
+import com.switchfully.parkshark.exceptions.member.BadCreateAddressException;
+import com.switchfully.parkshark.exceptions.division.BadCreateDivisionException;
+import com.switchfully.parkshark.exceptions.member.BadCreateLicensePlateException;
+import com.switchfully.parkshark.exceptions.member.BadCreateMemberException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.employee;
 
 import com.switchfully.parkshark.entity.Address;
 import com.switchfully.parkshark.entity.ParkingLot;

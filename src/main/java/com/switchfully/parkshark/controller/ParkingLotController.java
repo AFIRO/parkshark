@@ -1,8 +1,8 @@
 package com.switchfully.parkshark.controller;
 
-import com.switchfully.parkshark.dto.CreateParkingLotDTO;
-import com.switchfully.parkshark.dto.ParkingLotDTO;
-import com.switchfully.parkshark.dto.ShortenedParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.CreateParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
+import com.switchfully.parkshark.dto.parkinglot.ShortenedParkingLotDTO;
 import com.switchfully.parkshark.service.ParkingLotService;
 import com.switchfully.parkshark.switchsecure.SecurityGuard;
 import org.slf4j.Logger;

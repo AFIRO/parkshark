@@ -1,4 +1,4 @@
-package com.switchfully.parkshark.dto;
+package com.switchfully.parkshark.dto.member;
 
 public class MemberDTO {
     private final Integer id;

@@ -1,7 +1,7 @@
 package com.switchfully.parkshark.mapper;
 
-import com.switchfully.parkshark.dto.CreateMemberDTO;
-import com.switchfully.parkshark.dto.MemberDTO;
+import com.switchfully.parkshark.dto.member.CreateMemberDTO;
+import com.switchfully.parkshark.dto.member.MemberDTO;
 import com.switchfully.parkshark.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

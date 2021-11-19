@@ -1,7 +1,7 @@
 package com.switchfully.parkshark.controller;
 
-import com.switchfully.parkshark.dto.CreateDivisionDTO;
-import com.switchfully.parkshark.dto.DivisionDTO;
+import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
+import com.switchfully.parkshark.dto.division.DivisionDTO;
 import com.switchfully.parkshark.service.DivisionService;
 import com.switchfully.parkshark.switchsecure.SecurityGuard;
 import org.slf4j.Logger;
