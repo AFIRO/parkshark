@@ -31,4 +31,10 @@ public class AllocationControllerExceptionHandler extends ResponseEntityExceptio
         response.sendError(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
     }
 
+    @ExceptionHandler(WrongOwnerOfLicensePlateException.class)
+    protected void WrongOwnerOfLicensePlateException(WrongOwnerOfLicensePlateException exception, HttpServletResponse response) throws Exception {
+        logger.error(exception.getMessage());
+        response.sendError(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
+    }
+
 }

@@ -3,9 +3,11 @@ package com.switchfully.parkshark.service;
 import com.switchfully.parkshark.dto.AllocationDTO;
 import com.switchfully.parkshark.dto.CreateAllocationDTO;
 import com.switchfully.parkshark.entity.Allocation;
+import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.exceptions.allocation.AllocationAlreadyStoppedException;
 import com.switchfully.parkshark.exceptions.allocation.NoSuchAllocationException;
 import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfAllocationException;
+import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfLicensePlateException;
 import com.switchfully.parkshark.mapper.AllocationMapper;
 import com.switchfully.parkshark.repository.AllocationRepository;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,10 @@ public class AllocationService {
 
     public AllocationDTO startAllocation(CreateAllocationDTO createAllocationDTO){
         Allocation allocation  = allocationMapper.toEntity(createAllocationDTO);
+
+        Member member = allocation.getMember();
+        if (member.getMembershipLevel() != Member.MembershipLevel.GOLD && !member.getLicensePlate().getLicensePlateNumber().toLowerCase().equals( createAllocationDTO.getLicensePlate().toLowerCase())) throw new WrongOwnerOfLicensePlateException();
+
         allocationRepository.save(allocation);
         return allocationMapper.toDto(allocation);
     }
