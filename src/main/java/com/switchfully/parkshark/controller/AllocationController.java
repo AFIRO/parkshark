@@ -2,6 +2,7 @@ package com.switchfully.parkshark.controller;
 
 import com.switchfully.parkshark.dto.AllocationDTO;
 import com.switchfully.parkshark.dto.CreateAllocationDTO;
+import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.service.AllocationService;
 import com.switchfully.parkshark.switchsecure.SecurityGuard;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public class AllocationController {
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public List<AllocationDTO> getAllAllocations(@RequestParam(required = false) String status) {
+    public List<AllocationDTO> getAllAllocations(@RequestParam(required = false) Allocation.AllocationStatus status) {
         logger.info("Attempting to get all allocations.");
         return allocationService.getAllAllocations();
     }

@@ -2,13 +2,13 @@ package com.switchfully.parkshark.mapper;
 
 import com.switchfully.parkshark.dto.AllocationDTO;
 import com.switchfully.parkshark.dto.CreateAllocationDTO;
-import com.switchfully.parkshark.dto.MemberDTO;
-import com.switchfully.parkshark.dto.ParkingLotDTO;
+import com.switchfully.parkshark.dto.member.MemberDTO;
+import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.entity.ParkingLot;
-import com.switchfully.parkshark.exceptions.NoSuchMemberException;
 import com.switchfully.parkshark.exceptions.NoSuchParkingLotException;
+import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.repository.MemberRepository;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,6 @@ public class AllocationMapper {
         this.parkingLotRepository = parkingLotRepository;
         this.parkingLotMapper = parkingLotMapper;
     }
-
 
     public Allocation toEntity(CreateAllocationDTO createAllocationDTO) {
 
