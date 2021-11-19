@@ -33,7 +33,7 @@ class AllocationRepositoryTest {
 
     @Test
     public void findById(){
-        var toCheck = allocationRepositoryTest.findById(1);
+        var toCheck = allocationRepositoryTest.findAllocationByAllocationId(1);
         Assertions.assertNotNull(toCheck);
 
     }

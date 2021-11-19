@@ -33,7 +33,7 @@ class ParkingLotRepositoryTest {
 
     @Test
     public void findById(){
-        var toCheck = parkingLotRepository.findById(1);
+        var toCheck = parkingLotRepository.findParkingLotByParkingLotId(1);
         Assertions.assertNotNull(toCheck);
 
     }

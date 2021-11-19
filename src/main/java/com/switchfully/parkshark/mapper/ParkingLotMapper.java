@@ -30,13 +30,13 @@ public class ParkingLotMapper {
     }
 
     public ParkingLot toEntity(CreateParkingLotDTO createParkingLotDTO) {
-        var toCheckEmployee = employeeRepository.findById(createParkingLotDTO.getContactPerson());
-        var toCheckDivision = divisionRepository.findById(createParkingLotDTO.getDivision());
+        var toCheckEmployee = employeeRepository.findByEmployeeId(createParkingLotDTO.getContactPerson());
+        var toCheckDivision = divisionRepository.findByDivisionId(createParkingLotDTO.getDivision());
 
-        if (toCheckDivision.isEmpty())
+        if (toCheckDivision == null)
             throw new NoSuchDivisionException();
 
-        if (toCheckEmployee.isEmpty())
+        if (toCheckEmployee == null)
             throw new NoSuchEmployeeException();
 
         return new ParkingLot.Builder()
@@ -45,8 +45,8 @@ public class ParkingLotMapper {
                 .withHourlyPrice(createParkingLotDTO.getHourlyPrice())
                 .withCategory(createParkingLotDTO.getCategory())
                 .withParkingLotAddress(addressMapper.toEntity(createParkingLotDTO.getAddress()))
-                .withEmployee(toCheckEmployee.get())
-                .withDivision(toCheckDivision.get())
+                .withEmployee(toCheckEmployee)
+                .withDivision(toCheckDivision)
                 .build();
 
 

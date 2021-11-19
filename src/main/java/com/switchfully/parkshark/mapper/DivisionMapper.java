@@ -33,14 +33,14 @@ public class DivisionMapper {
             return new Division.Builder()
                     .withName(createDivisionDTO.getName())
                     .withOriginalName(createDivisionDTO.getOriginalName())
-                    .withDirector(employeeRepository.findById(createDivisionDTO.getDirector()).get())
-                    .withUpperDivision(divisionRepository.findById(createDivisionDTO.getUpperDivision()).get())
+                    .withDirector(employeeRepository.findByEmployeeId(createDivisionDTO.getDirector()))
+                    .withUpperDivision(divisionRepository.findByDivisionId(createDivisionDTO.getUpperDivision()))
                     .build();
         } else {
             return new Division.Builder()
                     .withName(createDivisionDTO.getName())
                     .withOriginalName(createDivisionDTO.getOriginalName())
-                    .withDirector(employeeRepository.findById(createDivisionDTO.getDirector()).get())
+                    .withDirector(employeeRepository.findByEmployeeId(createDivisionDTO.getDirector()))
                     .build();
         }
     }

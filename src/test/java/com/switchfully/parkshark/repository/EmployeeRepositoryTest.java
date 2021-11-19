@@ -3,10 +3,7 @@ package com.switchfully.parkshark.repository;
 import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.entity.Employee;
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
@@ -19,7 +16,7 @@ class EmployeeRepositoryTest {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @BeforeEach
+    @BeforeAll
     void setUp() {
         employeeRepository.save(new Employee());
 
@@ -36,7 +33,7 @@ class EmployeeRepositoryTest {
 
     @Test
     public void findById(){
-        var toCheck = employeeRepository.findById(1);
+        var toCheck = employeeRepository.findByEmployeeId(1);
         Assertions.assertNotNull(toCheck);
 
     }

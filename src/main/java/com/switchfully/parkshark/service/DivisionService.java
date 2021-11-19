@@ -44,7 +44,7 @@ public class DivisionService {
         }
 
         var newDivision = divisionMapper.toEntity(createDivisionDTO);
-        logger.info("Data for create member valid");
+        logger.info("Data for create division valid");
         divisionRepository.save(newDivision);
         return divisionMapper.toDto(newDivision);
     }
