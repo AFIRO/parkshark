@@ -8,10 +8,10 @@ public class DivisionDTO {
     private final int divisionId;
     private final String name;
     private final String originalName;
-    private final Employee director;
-    private final Division upperDivision;
+    private final EmployeeDTO director;
+    private final UpperDivisionDTO upperDivision;
 
-    public DivisionDTO(int divisionId, String name, String originalName, Employee director, Division upperDivision) {
+    public DivisionDTO(int divisionId, String name, String originalName, EmployeeDTO director, UpperDivisionDTO upperDivision) {
         this.divisionId = divisionId;
         this.name = name;
         this.originalName = originalName;
@@ -31,11 +31,11 @@ public class DivisionDTO {
         return originalName;
     }
 
-    public Employee getDirector() {
+    public EmployeeDTO getDirector() {
         return director;
     }
 
-    public Division getUpperDivision() {
+    public UpperDivisionDTO getUpperDivision() {
         return upperDivision;
     }
 
@@ -44,8 +44,8 @@ public class DivisionDTO {
         private int id;
         private String name;
         private String originalName;
-        private Employee employee;
-        private Division division;
+        private EmployeeDTO employee;
+        private UpperDivisionDTO division;
 
         public Builder withId(int id) {
             this.id = id;
@@ -62,12 +62,12 @@ public class DivisionDTO {
             return this;
         }
 
-        public Builder withEmployee(Employee employee) {
+        public Builder withEmployee(EmployeeDTO employee) {
             this.employee = employee;
             return this;
         }
 
-        public Builder withDivision(Division division) {
+        public Builder withUpperDivision(UpperDivisionDTO division) {
             this.division = division;
             return this;
         }

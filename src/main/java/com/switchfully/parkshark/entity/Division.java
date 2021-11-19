@@ -37,7 +37,7 @@ public class Division {
     public Division() {
     }
 
-    public int getId() {
+    public int getDivisionId() {
         return divisionId;
     }
 

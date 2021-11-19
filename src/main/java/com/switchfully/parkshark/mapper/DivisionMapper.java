@@ -2,6 +2,7 @@ package com.switchfully.parkshark.mapper;
 
 import com.switchfully.parkshark.dto.CreateDivisionDTO;
 import com.switchfully.parkshark.dto.DivisionDTO;
+import com.switchfully.parkshark.dto.UpperDivisionDTO;
 import com.switchfully.parkshark.entity.Division;
 import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;
@@ -15,10 +16,12 @@ public class DivisionMapper {
 
     private final DivisionRepository divisionRepository;
     private final EmployeeRepository employeeRepository;
+    private final EmployeeMapper employeeMapper;
 
-    public DivisionMapper(DivisionRepository divisionRepository, EmployeeRepository employeeRepository) {
+    public DivisionMapper(DivisionRepository divisionRepository, EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
         this.divisionRepository = divisionRepository;
         this.employeeRepository = employeeRepository;
+        this.employeeMapper = employeeMapper;
     }
 
     public List<DivisionDTO> toDto(List<Division> divisionList) {
@@ -44,12 +47,25 @@ public class DivisionMapper {
 
     public DivisionDTO toDto(Division division) {
         return new DivisionDTO.Builder()
-                .withId(division.getId())
+                .withId(division.getDivisionId())
                 .withName(division.getName())
                 .withOriginalName(division.getOriginalName())
-                .withEmployee(division.getDirector())
-                .withDivision(division.getUpperDivision())
+                .withEmployee(employeeMapper.toDto(division.getDirector()))
+                .withUpperDivision(toDtoUpperDivision(division.getUpperDivision()))
                 .build();
     }
+
+    public UpperDivisionDTO toDtoUpperDivision(Division upperDivision){
+        if(upperDivision == null){
+            return null;
+        }
+        return new UpperDivisionDTO.Builder()
+                .withDivisionId(upperDivision.getDivisionId())
+                .withName(upperDivision.getName())
+                .withDirector(employeeMapper.toDtoEmployeeUpperDivision(upperDivision.getDirector()))
+                .build();
+    }
+
+
 
 }
