@@ -35,11 +35,11 @@ public class DivisionService {
         validation.assertCorrectCreateDivisionDTO(createDivisionDTO);
 
         if(createDivisionDTO.getUpperDivision() != null){
-            if(divisionRepository.findById(createDivisionDTO.getUpperDivision()).isEmpty()){
+            if(divisionRepository.findByDivisionId(createDivisionDTO.getUpperDivision()) == null){
                 throw new NoSuchDivisionException();
             }
         }
-        if(employeeRepository.findById(createDivisionDTO.getDirector()).isEmpty()){
+        if(employeeRepository.findByEmployeeId(createDivisionDTO.getDirector())== null){
             throw new NoSuchEmployeeException();
         }
 

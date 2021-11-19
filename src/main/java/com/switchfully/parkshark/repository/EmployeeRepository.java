@@ -11,4 +11,6 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     List<Employee> findAll();
 
+    Employee findByEmployeeId(int id);
+
 }

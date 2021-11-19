@@ -1,5 +1,9 @@
 package com.switchfully.parkshark.entity;
 
+import com.switchfully.parkshark.exceptions.member.BadCreateMemberException;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -51,7 +55,7 @@ public class Member {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.email = email;
+        this.email = isValidEmailAddress(email);
         this.telephoneNumber = telephoneNumber;
         this.registrationDate = registrationDate;
         this.licensePlate = licensePlate;
@@ -92,6 +96,16 @@ public class Member {
 
     public MembershipLevel getMembershipLevel() {
         return membershipLevel;
+    }
+
+    public String isValidEmailAddress(String email) {
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            throw new BadCreateMemberException();
+        }
+        return email;
     }
 
     @Override
