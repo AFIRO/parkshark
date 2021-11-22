@@ -4,10 +4,7 @@ import com.switchfully.parkshark.dto.allocation.AllocationDTO;
 import com.switchfully.parkshark.dto.allocation.CreateAllocationDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.entity.Member;
-import com.switchfully.parkshark.exceptions.allocation.AllocationAlreadyStoppedException;
-import com.switchfully.parkshark.exceptions.allocation.NoSuchAllocationException;
-import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfAllocationException;
-import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfLicensePlateException;
+import com.switchfully.parkshark.exceptions.allocation.*;
 import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.mapper.AllocationMapper;
 import com.switchfully.parkshark.repository.AllocationRepository;
@@ -36,6 +33,7 @@ public class AllocationService {
 
         // Maximum Results
         if (maxResults == null) maxResults = Integer.MAX_VALUE;
+        if (maxResults < 0) throw new InvalidMaxResultsInputException();
 
         // Sort by Start Hour
         Comparator<Allocation> sortComparator = Comparator.comparing(Allocation::getStartHour);

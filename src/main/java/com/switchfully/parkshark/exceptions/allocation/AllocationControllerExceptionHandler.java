@@ -37,4 +37,10 @@ public class AllocationControllerExceptionHandler extends ResponseEntityExceptio
         response.sendError(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
     }
 
+    @ExceptionHandler(InvalidMaxResultsInputException.class)
+    protected void InvalidMaxResultsInputException(InvalidMaxResultsInputException exception, HttpServletResponse response) throws Exception {
+        logger.error(exception.getMessage());
+        response.sendError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+    }
+
 }
