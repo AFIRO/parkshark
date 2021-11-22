@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 
 public class AllocationDTO {
     private final int allocationId;
-    private final MemberDTO member;
-    private final ParkingLotDTO parkingLot;
     private final LocalDateTime startHour;
     private final LocalDateTime endHour;
     private final Allocation.AllocationStatus status;
+    private final MemberDTO member;
+    private final ParkingLotDTO parkingLot;
 
     public AllocationDTO(int allocationId, MemberDTO member, ParkingLotDTO parkingLot, LocalDateTime startHour, LocalDateTime endHour, Allocation.AllocationStatus status) {
         this.allocationId = allocationId;
