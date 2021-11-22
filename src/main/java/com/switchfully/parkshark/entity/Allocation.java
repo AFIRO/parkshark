@@ -12,16 +12,21 @@ public class Allocation {
     @SequenceGenerator(name = "allocation_all_id_seq", sequenceName = "allocation_all_id_seq", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "allocation_all_id_seq")
     private int allocationId;
+
     @OneToOne
     @JoinColumn(name = "all_mem_id")
     private Member member;
+
     @OneToOne
     @JoinColumn(name = "all_pl_id")
     private ParkingLot parkingLot;
+
     @Column(name = "all_start_hour")
     private LocalDateTime startHour;
+
     @Column(name = "all_end_hour")
     private LocalDateTime endHour;
+
     @Column(name = "all_status")
     @Enumerated(EnumType.STRING)
     private Allocation.AllocationStatus status;

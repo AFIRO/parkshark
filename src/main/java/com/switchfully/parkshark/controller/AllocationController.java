@@ -5,11 +5,9 @@ import com.switchfully.parkshark.dto.allocation.CreateAllocationDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.service.AllocationService;
 import com.switchfully.parkshark.switchsecure.SecurityGuard;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
