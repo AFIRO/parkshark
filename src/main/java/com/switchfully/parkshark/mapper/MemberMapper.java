@@ -17,18 +17,9 @@ public class MemberMapper {
         this.licensePlateMapper = licensePlateMapper;
     }
 
-    public Member toEntity(CreateMemberDTO createMemberDTO) {
-        if (createMemberDTO.getMembershipLevel() == null) {
-            return new Member.Builder()
-                    .withFirstName(createMemberDTO.getFirstName())
-                    .withLastName(createMemberDTO.getLastName())
-                    .withAddress(addressMapper.toEntity(createMemberDTO.getAddress()))
-                    .withEmail(createMemberDTO.getEmail())
-                    .withLicensePlate(licensePlateMapper.toEntity(createMemberDTO.getLicensePlateDTO()))
-                    .withTelephoneNumber(createMemberDTO.getTelephoneNumber())
-                    .withMembershipLevel(Member.MembershipLevel.BRONZE)
-                    .withRegistrationDate(createMemberDTO.getRegistrationDate())
-                    .build();
+    public Member toEntity(CreateMemberDTO createMemberDTO, Member.MembershipLevel membershipLevel) {
+        if (membershipLevel == null) {
+            membershipLevel = Member.MembershipLevel.BRONZE;
         }
         return new Member.Builder()
                 .withFirstName(createMemberDTO.getFirstName())
@@ -37,7 +28,7 @@ public class MemberMapper {
                 .withEmail(createMemberDTO.getEmail())
                 .withLicensePlate(licensePlateMapper.toEntity(createMemberDTO.getLicensePlateDTO()))
                 .withTelephoneNumber(createMemberDTO.getTelephoneNumber())
-                .withMembershipLevel(createMemberDTO.getMembershipLevel())
+                .withMembershipLevel(membershipLevel)
                 .withRegistrationDate(createMemberDTO.getRegistrationDate())
                 .build();
     }

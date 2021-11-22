@@ -2,6 +2,7 @@ package com.switchfully.parkshark.service;
 
 import com.switchfully.parkshark.dto.member.CreateMemberDTO;
 import com.switchfully.parkshark.dto.member.MemberDTO;
+import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.mapper.MemberMapper;
 import com.switchfully.parkshark.repository.MemberRepository;
@@ -30,10 +31,10 @@ public class MemberService {
         this.validation = validation;
     }
 
-    public MemberDTO createMember(CreateMemberDTO createMemberDTO) {
+    public MemberDTO createMember(CreateMemberDTO createMemberDTO, Member.MembershipLevel membershipLevel) {
         validation.assertCorrectCreateMemberDTO(createMemberDTO);
-        var newMember = mapper.toEntity(createMemberDTO);
         logger.info("Data for create member valid");
+        var newMember = mapper.toEntity(createMemberDTO, membershipLevel);
         repository.save(newMember);
         return mapper.toDto(newMember);
     }
