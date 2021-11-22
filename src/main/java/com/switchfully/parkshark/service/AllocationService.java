@@ -50,9 +50,6 @@ public class AllocationService {
     public AllocationDTO startAllocation(CreateAllocationDTO createAllocationDTO) {
         Allocation allocation = allocationMapper.toEntity(createAllocationDTO);
 
-        Member member = allocation.getMember();
-        if (member.getMembershipLevel() != Member.MembershipLevel.GOLD && !member.getLicensePlate().getLicensePlateNumber().equalsIgnoreCase(createAllocationDTO.getLicensePlate())) throw new WrongOwnerOfLicensePlateException();
-
         allocationRepository.save(allocation);
         return allocationMapper.toDto(allocation);
     }

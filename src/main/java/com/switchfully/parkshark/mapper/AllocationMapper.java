@@ -8,6 +8,7 @@ import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.entity.ParkingLot;
 import com.switchfully.parkshark.exceptions.allocation.ParkingLotIsAlreadyFullException;
+import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfLicensePlateException;
 import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.exceptions.parkinglot.NoSuchParkingLotException;
 import com.switchfully.parkshark.repository.AllocationRepository;
@@ -43,6 +44,8 @@ public class AllocationMapper {
 
         if (member == null) throw new NoSuchMemberException();
         if (parkingLot == null) throw new NoSuchParkingLotException();
+
+        if (member.getMembershipLevel() != Member.MembershipLevel.GOLD && !member.getLicensePlate().getLicensePlateNumber().equalsIgnoreCase(createAllocationDTO.getLicensePlate())) throw new WrongOwnerOfLicensePlateException();
 
         int activeAllocationsForParkingLot = allocationRepository.countAllocationByParkingLotParkingLotIdAndStatus(parkingLot.getParkingLotId(), Allocation.AllocationStatus.ACTIVE);
         int maximumCapacityOfParkingLot = parkingLot.getMaxCapacity();
