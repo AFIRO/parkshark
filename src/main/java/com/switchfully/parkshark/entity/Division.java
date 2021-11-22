@@ -19,11 +19,11 @@ public class Division {
     @Column(name = "div_original_name")
     private String originalName;
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "div_director_id")
     private Employee director;
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "div_upper_div_id")
     private Division upperDivision;
 
@@ -69,7 +69,6 @@ public class Division {
     public int hashCode() {
         return Objects.hash(divisionId);
     }
-
 
 
     public static final class Builder {

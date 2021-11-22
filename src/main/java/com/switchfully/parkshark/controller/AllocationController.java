@@ -38,7 +38,7 @@ public class AllocationController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     @SecurityGuard(SecurityGuard.ApiUserRole.CUSTOMER)
-    public AllocationDTO startAllocation(@RequestBody CreateAllocationDTO createAllocationDTO){
+    public AllocationDTO startAllocation(@RequestBody CreateAllocationDTO createAllocationDTO) {
         logger.info("Attempting to start allocation.");
         return allocationService.startAllocation(createAllocationDTO);
     }

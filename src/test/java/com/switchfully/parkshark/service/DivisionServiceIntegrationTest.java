@@ -30,24 +30,24 @@ public class DivisionServiceIntegrationTest {
 
 
     @BeforeAll
-    void setup(){
+    void setup() {
         divisionRepositoryMock = Mockito.mock(DivisionRepository.class);
-        EmployeeRepositoryMock =  Mockito.mock(EmployeeRepository.class);
+        EmployeeRepositoryMock = Mockito.mock(EmployeeRepository.class);
         employeeMapperMock = Mockito.mock(EmployeeMapper.class);
         validationService = new ValidationService();
-        divisionService  = new DivisionService(divisionRepositoryMock, new DivisionMapper(divisionRepositoryMock,EmployeeRepositoryMock,employeeMapperMock), EmployeeRepositoryMock, validationService);
-        divisionMapper = new DivisionMapper(divisionRepositoryMock,EmployeeRepositoryMock,employeeMapperMock);
+        divisionService = new DivisionService(divisionRepositoryMock, new DivisionMapper(divisionRepositoryMock, EmployeeRepositoryMock, employeeMapperMock), EmployeeRepositoryMock, validationService);
+        divisionMapper = new DivisionMapper(divisionRepositoryMock, EmployeeRepositoryMock, employeeMapperMock);
     }
 
     @Test
-    void whenCreatingNewDivision_serviceReturnsExpectedDTO(){
+    void whenCreatingNewDivision_serviceReturnsExpectedDTO() {
         //given
-        CreateDivisionDTO test = new CreateDivisionDTO("test","test",1, 1);
+        CreateDivisionDTO test = new CreateDivisionDTO("test", "test", 1, 1);
         Division testUpperDivision = new Division();
         Employee testEmployee = new Employee.Builder().withFirstName("test").withLastName("test").withEmail("test@test.be").build();
         Mockito.when(divisionRepositoryMock.findByDivisionId(1)).thenReturn(testUpperDivision);
         Mockito.when(EmployeeRepositoryMock.findByEmployeeId(1)).thenReturn(testEmployee);
-        Mockito.when(employeeMapperMock.toDtoEmployeeUpperDivision(testEmployee)).thenReturn(new EmployeeUpperDivisionDTO(1,"test","test"));
+        Mockito.when(employeeMapperMock.toDtoEmployeeUpperDivision(testEmployee)).thenReturn(new EmployeeUpperDivisionDTO(1, "test", "test"));
         Division temp = divisionMapper.toEntity(test);
         var toCheckAgainst = divisionMapper.toDto(temp);
 
@@ -60,24 +60,24 @@ public class DivisionServiceIntegrationTest {
     }
 
     @Test
-    void whenFindAllCalled_returnEmptyListAndCallRepo(){
+    void whenFindAllCalled_returnEmptyListAndCallRepo() {
         Mockito.when(divisionRepositoryMock.findAll()).thenReturn(new ArrayList<>());
         var toCheck = divisionService.getAllDivisions().size();
 
         Mockito.verify(divisionRepositoryMock).findAll();
-        Assertions.assertEquals(0,toCheck);
+        Assertions.assertEquals(0, toCheck);
 
     }
 
     @Test
-    void whenFindSpecificIsCalled_expectedObjectisReturned(){
-        var testDivision = new Division("test","test",new Employee(),new Division());
+    void whenFindSpecificIsCalled_expectedObjectisReturned() {
+        var testDivision = new Division("test", "test", new Employee(), new Division());
         Mockito.when(divisionRepositoryMock.findByDivisionId(1)).thenReturn(testDivision);
         var toCheckAgainst = divisionService.getSpecificDivisionById(1);
         var toCheck = divisionMapper.toDto(testDivision);
 
         //Mockito.verify(divisionRepositoryMock).findByDivisionId(1);
-        Assertions.assertEquals(toCheck.getName(),toCheckAgainst.getName());
+        Assertions.assertEquals(toCheck.getName(), toCheckAgainst.getName());
 
     }
 

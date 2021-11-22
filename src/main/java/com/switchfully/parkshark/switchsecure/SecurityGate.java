@@ -20,11 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 @RequestScope
 public class SecurityGate implements HandlerInterceptor {
     public static final String JWT_SECRET = "GoGoSwitchfully";
+    private final UserSecurityInformation userSecurityInformation;
     Logger logger = LoggerFactory.getLogger(SecurityGate.class);
 
-    private final UserSecurityInformation userSecurityInformation;
-
-    public SecurityGate(@Qualifier("getUsernameAndRoleFromJWT")UserSecurityInformation userSecurityInformation) {
+    public SecurityGate(@Qualifier("getUsernameAndRoleFromJWT") UserSecurityInformation userSecurityInformation) {
         this.userSecurityInformation = userSecurityInformation;
     }
 
@@ -48,7 +47,7 @@ public class SecurityGate implements HandlerInterceptor {
 
 
         // if JWT does NOT contain the correct role
-        if(jwtMatchSecurityGuardRole(role, request)) {
+        if (jwtMatchSecurityGuardRole(role, request)) {
             userSecurityInformation.setRole(getRoleFromJwtToken(getJWT(request)));
             userSecurityInformation.setName(getUserNameFromJwtToken(getJWT(request)));
             return true;
@@ -60,7 +59,7 @@ public class SecurityGate implements HandlerInterceptor {
     }
 
     private boolean jwtMatchSecurityGuardRole(SecurityGuard.ApiUserRole value, HttpServletRequest request) {
-        if(getJWT(request) == null) {
+        if (getJWT(request) == null) {
             return false;
         }
         try {
@@ -72,7 +71,7 @@ public class SecurityGate implements HandlerInterceptor {
             return false;
         }
         return value.name().equals(getRoleFromJwtToken(getJWT(request)))
-               ||SecurityGuard.ApiUserRole.ADMIN.name().equals(getRoleFromJwtToken(getJWT(request))) ;
+                || SecurityGuard.ApiUserRole.ADMIN.name().equals(getRoleFromJwtToken(getJWT(request)));
     }
 
     private String getJWT(HttpServletRequest request) {

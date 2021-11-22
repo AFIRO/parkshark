@@ -14,7 +14,7 @@ public class CreateMemberDTO {
     private String email;
     private CreateLicensePlateDTO licensePlateDTO;
     private Member.MembershipLevel membershipLevel;
-    private LocalDate registrationDate;
+    private final LocalDate registrationDate;
 
     public CreateMemberDTO(String firstName, String lastName, CreateAddressDTO address, String telephoneNumber, String email, CreateLicensePlateDTO licensePlateDTO, Member.MembershipLevel membershipLevel, LocalDate registrationDate) {
         this.firstName = firstName;

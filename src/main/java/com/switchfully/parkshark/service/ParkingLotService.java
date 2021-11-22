@@ -30,7 +30,7 @@ public class ParkingLotService {
         this.parkingLotMapper = parkingLotMapper;
     }
 
-    public List<ShortenedParkingLotDTO> getAllLots(){
+    public List<ShortenedParkingLotDTO> getAllLots() {
         return parkingLotRepository.findAll()
                 .stream()
                 .map(parkingLotMapper::toShortenedDto)

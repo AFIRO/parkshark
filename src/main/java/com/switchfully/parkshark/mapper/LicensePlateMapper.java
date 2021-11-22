@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LicensePlateMapper {
 
-    public LicensePlate toEntity(CreateLicensePlateDTO dto){
+    public LicensePlate toEntity(CreateLicensePlateDTO dto) {
         return new LicensePlate.Builder()
                 .withLicensePlateNumber(dto.getLicensePlateNumber())
                 .withLicensePlateCountry(dto.getLicensePlateCountry())

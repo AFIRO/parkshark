@@ -1,13 +1,17 @@
 package com.switchfully.parkshark.dto.address;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 public class CreateAddressDTO {
-    private String street;
-    private String houseNumber;
-    private String zipcode;
-    private String city;
+    private final String street;
+    private final String houseNumber;
+    private final String zipcode;
+    private final String city;
+
+    public CreateAddressDTO(String street, String houseNumber, String zipcode, String city) {
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.zipcode = zipcode;
+        this.city = city;
+    }
 
     public String getStreet() {
         return street;
@@ -23,12 +27,5 @@ public class CreateAddressDTO {
 
     public String getCity() {
         return city;
-    }
-
-    public CreateAddressDTO(String street, String houseNumber, String zipcode, String city) {
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.zipcode = zipcode;
-        this.city = city;
     }
 }

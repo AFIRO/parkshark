@@ -1,7 +1,6 @@
 package com.switchfully.parkshark.repository;
 
 import com.switchfully.parkshark.entity.Allocation;
-import com.switchfully.parkshark.entity.ParkingLot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,7 @@ class AllocationRepositoryTest {
 
 
     @Test
-    public void findAll(){
+    public void findAll() {
         var toCheck = allocationRepositoryTest.findAll().size();
         Assertions.assertEquals(1, toCheck);
 
@@ -32,21 +31,19 @@ class AllocationRepositoryTest {
     }
 
     @Test
-    public void findById(){
+    public void findById() {
         var toCheck = allocationRepositoryTest.findAllocationByAllocationId(1);
         Assertions.assertNotNull(toCheck);
 
     }
 
     @Test
-    public void save(){
+    public void save() {
         allocationRepositoryTest.save(new Allocation());
         var toCheck = allocationRepositoryTest.findAll().size();
         Assertions.assertEquals(2, toCheck);
 
     }
-
-
 
 
 }

@@ -12,37 +12,27 @@ import java.util.Objects;
 @Table(name = "member")
 public class Member {
 
-    public enum MembershipLevel {BRONZE, SILVER, GOLD}
-
     @Id
     @SequenceGenerator(name = "member_mem_id_seq", sequenceName = "member_mem_id_seq", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_mem_id_seq")
     @Column(name = "mem_id", nullable = false)
     private Integer memberId;
-
     @Column(name = "mem_firstname")
     private String firstName;
-
     @Column(name = "mem_lastname")
     private String lastName;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mem_address_id")
     private Address address;
-
     @Column(name = "mem_email_address")
     private String email;
-
     @Column(name = "mem_telephone_number")
     private String telephoneNumber;
-
     @Column(name = "mem_reg_date", columnDefinition = "DATE")
     private LocalDate registrationDate;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mem_lp_id")
     private LicensePlate licensePlate;
-
     @Column(name = "mem_msl")
     @Enumerated(EnumType.STRING)
     private MembershipLevel membershipLevel;
@@ -121,6 +111,8 @@ public class Member {
     public int hashCode() {
         return Objects.hash(getMemberId());
     }
+
+    public enum MembershipLevel {BRONZE, SILVER, GOLD}
 
     public static class Builder {
         private String firstName;

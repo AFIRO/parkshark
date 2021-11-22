@@ -1,8 +1,8 @@
 package com.switchfully.parkshark.dto.licenseplate;
 
 public class CreateLicensePlateDTO {
-    private String licensePlateNumber;
-    private String licensePlateCountry;
+    private final String licensePlateNumber;
+    private final String licensePlateCountry;
 
     public CreateLicensePlateDTO(String licensePlateNumber, String licensePlateCountry) {
         this.licensePlateNumber = licensePlateNumber;

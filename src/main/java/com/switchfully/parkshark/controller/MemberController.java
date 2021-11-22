@@ -34,7 +34,7 @@ public class MemberController {
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public List<MemberDTO> getAllMembers(){
+    public List<MemberDTO> getAllMembers() {
         logger.info("Attempting to get all members.");
         return memberService.getAllMembers();
     }
@@ -42,7 +42,7 @@ public class MemberController {
     @GetMapping(path = "/{memberId}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public MemberDTO getSpecificMemberById(@PathVariable int memberId){
+    public MemberDTO getSpecificMemberById(@PathVariable int memberId) {
         logger.info("Attempting to get specific member called on member id:" + memberId);
         return memberService.getSpecificMemberById(memberId);
     }

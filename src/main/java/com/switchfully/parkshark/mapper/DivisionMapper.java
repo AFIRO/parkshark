@@ -8,9 +8,6 @@ import com.switchfully.parkshark.repository.DivisionRepository;
 import com.switchfully.parkshark.repository.EmployeeRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Component
 public class DivisionMapper {
 
@@ -26,7 +23,7 @@ public class DivisionMapper {
 
 
     public Division toEntity(CreateDivisionDTO createDivisionDTO) {
-        if(createDivisionDTO.getUpperDivision() != null){
+        if (createDivisionDTO.getUpperDivision() != null) {
             return new Division.Builder()
                     .withName(createDivisionDTO.getName())
                     .withOriginalName(createDivisionDTO.getOriginalName())
@@ -52,8 +49,8 @@ public class DivisionMapper {
                 .build();
     }
 
-    public UpperDivisionDTO toDtoUpperDivision(Division upperDivision){
-        if(upperDivision == null){
+    public UpperDivisionDTO toDtoUpperDivision(Division upperDivision) {
+        if (upperDivision == null) {
             return null;
         }
         return new UpperDivisionDTO.Builder()
@@ -62,7 +59,6 @@ public class DivisionMapper {
                 .withDirector(employeeMapper.toDtoEmployeeUpperDivision(upperDivision.getDirector()))
                 .build();
     }
-
 
 
 }

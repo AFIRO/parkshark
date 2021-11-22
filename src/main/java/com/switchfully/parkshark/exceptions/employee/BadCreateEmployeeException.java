@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class BadCreateEmployeeException extends RuntimeException {
 
     public static final String DEFAULT_MESSAGE = "Input for creating employee invalid";
+
     public BadCreateEmployeeException() {
         super(DEFAULT_MESSAGE);
     }

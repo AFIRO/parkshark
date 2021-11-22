@@ -21,7 +21,7 @@ public class EmployeeMapper {
                 .build();
     }
 
-    public EmployeeDTO toDto(Employee employee){
+    public EmployeeDTO toDto(Employee employee) {
         return new EmployeeDTO.Builder()
                 .withDirectorId(employee.getEmployeeId())
                 .withFirstName(employee.getFirstName())
@@ -35,7 +35,7 @@ public class EmployeeMapper {
                 .build();
     }
 
-    public EmployeeUpperDivisionDTO toDtoEmployeeUpperDivision(Employee employee){
+    public EmployeeUpperDivisionDTO toDtoEmployeeUpperDivision(Employee employee) {
         return new EmployeeUpperDivisionDTO.Builder()
                 .withDirectorId(employee.getEmployeeId())
                 .withFirstName(employee.getFirstName())

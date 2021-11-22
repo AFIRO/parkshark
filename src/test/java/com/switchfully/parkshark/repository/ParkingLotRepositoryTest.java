@@ -1,6 +1,5 @@
 package com.switchfully.parkshark.repository;
 
-import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.entity.ParkingLot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,7 +23,7 @@ class ParkingLotRepositoryTest {
 
 
     @Test
-    public void findAll(){
+    public void findAll() {
         var toCheck = parkingLotRepository.findAll().size();
         Assertions.assertEquals(1, toCheck);
 
@@ -32,21 +31,19 @@ class ParkingLotRepositoryTest {
     }
 
     @Test
-    public void findById(){
+    public void findById() {
         var toCheck = parkingLotRepository.findParkingLotByParkingLotId(1);
         Assertions.assertNotNull(toCheck);
 
     }
 
     @Test
-    public void save(){
+    public void save() {
         parkingLotRepository.save(new ParkingLot());
         var toCheck = parkingLotRepository.findAll().size();
         Assertions.assertEquals(2, toCheck);
 
     }
-
-
 
 
 }

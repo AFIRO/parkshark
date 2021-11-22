@@ -35,12 +35,12 @@ public class DivisionService {
     public DivisionDTO createDivision(CreateDivisionDTO createDivisionDTO) {
         validation.assertCorrectCreateDivisionDTO(createDivisionDTO);
 
-        if(createDivisionDTO.getUpperDivision() != null){
-            if(divisionRepository.findByDivisionId(createDivisionDTO.getUpperDivision()) == null){
+        if (createDivisionDTO.getUpperDivision() != null) {
+            if (divisionRepository.findByDivisionId(createDivisionDTO.getUpperDivision()) == null) {
                 throw new NoSuchDivisionException();
             }
         }
-        if(employeeRepository.findByEmployeeId(createDivisionDTO.getDirector())== null){
+        if (employeeRepository.findByEmployeeId(createDivisionDTO.getDirector()) == null) {
             throw new NoSuchEmployeeException();
         }
 

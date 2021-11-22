@@ -3,9 +3,6 @@ package com.switchfully.parkshark.dto.parkinglot;
 import com.switchfully.parkshark.dto.address.AddressDTO;
 import com.switchfully.parkshark.dto.division.DivisionDTO;
 import com.switchfully.parkshark.dto.employee.EmployeeDTO;
-import com.switchfully.parkshark.entity.Address;
-import com.switchfully.parkshark.entity.Division;
-import com.switchfully.parkshark.entity.Employee;
 import com.switchfully.parkshark.entity.ParkingLot;
 
 public class ParkingLotDTO {
