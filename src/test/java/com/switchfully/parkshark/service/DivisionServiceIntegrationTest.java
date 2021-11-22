@@ -70,7 +70,7 @@ public class DivisionServiceIntegrationTest {
     }
 
     @Test
-    void whenFindSpecificIsCalled_expectedObjectisReturned() {
+    void whenFindSpecificIsCalled_expectedObjectIsReturned() {
         var testDivision = new Division("test", "test", new Employee(), new Division());
         Mockito.when(divisionRepositoryMock.findByDivisionId(1)).thenReturn(testDivision);
         var toCheckAgainst = divisionService.getSpecificDivisionById(1);
