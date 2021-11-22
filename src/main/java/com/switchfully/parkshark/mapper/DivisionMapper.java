@@ -44,7 +44,7 @@ public class DivisionMapper {
                 .withId(division.getDivisionId())
                 .withName(division.getName())
                 .withOriginalName(division.getOriginalName())
-                .withEmployee(employeeMapper.toDto(division.getDirector()))
+                .withEmployee(employeeMapper.toDtoShortenedEmployee(division.getDirector()))
                 .withUpperDivision(toDtoUpperDivision(division.getUpperDivision()))
                 .build();
     }

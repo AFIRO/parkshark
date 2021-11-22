@@ -35,12 +35,14 @@ public class DivisionService {
     public DivisionDTO createDivision(CreateDivisionDTO createDivisionDTO) {
         validation.assertCorrectCreateDivisionDTO(createDivisionDTO);
 
-        if (createDivisionDTO.getUpperDivision() != null) {
-            if (divisionRepository.findByDivisionId(createDivisionDTO.getUpperDivision()) == null) {
+        if(createDivisionDTO.getUpperDivision() != null){
+            if(divisionRepository.findByDivisionId(createDivisionDTO.getUpperDivision()) == null){
+                logger.error("Data provided for upper division invalid");
                 throw new NoSuchDivisionException();
             }
         }
-        if (employeeRepository.findByEmployeeId(createDivisionDTO.getDirector()) == null) {
+        if(employeeRepository.findByEmployeeId(createDivisionDTO.getDirector())== null){
+            logger.error("Data provided for director invalid");
             throw new NoSuchEmployeeException();
         }
 

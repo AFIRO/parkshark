@@ -1,16 +1,16 @@
 package com.switchfully.parkshark.dto.division;
 
-import com.switchfully.parkshark.dto.employee.EmployeeDTO;
+import com.switchfully.parkshark.dto.employee.ShortenedEmployeeDTO;
 
 public class DivisionDTO {
 
     private final int divisionId;
     private final String name;
     private final String originalName;
-    private final EmployeeDTO director;
+    private final ShortenedEmployeeDTO director;
     private final UpperDivisionDTO upperDivision;
 
-    public DivisionDTO(int divisionId, String name, String originalName, EmployeeDTO director, UpperDivisionDTO upperDivision) {
+    public DivisionDTO(int divisionId, String name, String originalName, ShortenedEmployeeDTO director, UpperDivisionDTO upperDivision) {
         this.divisionId = divisionId;
         this.name = name;
         this.originalName = originalName;
@@ -30,7 +30,7 @@ public class DivisionDTO {
         return originalName;
     }
 
-    public EmployeeDTO getDirector() {
+    public ShortenedEmployeeDTO getDirector() {
         return director;
     }
 
@@ -43,7 +43,7 @@ public class DivisionDTO {
         private int id;
         private String name;
         private String originalName;
-        private EmployeeDTO employee;
+        private ShortenedEmployeeDTO employee;
         private UpperDivisionDTO division;
 
         public Builder withId(int id) {
@@ -61,7 +61,7 @@ public class DivisionDTO {
             return this;
         }
 
-        public Builder withEmployee(EmployeeDTO employee) {
+        public Builder withEmployee(ShortenedEmployeeDTO employee) {
             this.employee = employee;
             return this;
         }
