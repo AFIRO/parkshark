@@ -48,8 +48,8 @@ public class ParkingLotService {
         return parkingLotMapper.toDto(parkingLot);
     }
 
-    public ParkingLotDTO getSpecificLotById(int id) {
-        var toCheck = parkingLotRepository.findById(id);
+    public ParkingLotDTO getSpecificLotById(int parkingLotId) {
+        var toCheck = parkingLotRepository.findById(parkingLotId);
         if (toCheck.isEmpty())
             throw new NoSuchParkingLotException();
 

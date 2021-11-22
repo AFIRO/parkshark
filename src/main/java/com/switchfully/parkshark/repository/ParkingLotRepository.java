@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ParkingLotRepository extends CrudRepository<ParkingLot, Integer> {
 
-    ParkingLot findParkingLotByParkingLotId(int id);
+    ParkingLot findParkingLotByParkingLotId(int parkingLotId);
 
     List<ParkingLot> findAll();
 }

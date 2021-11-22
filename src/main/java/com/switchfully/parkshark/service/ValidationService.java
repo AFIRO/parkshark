@@ -22,16 +22,23 @@ public class ValidationService {
         return input != null && !input.isBlank() && !input.isEmpty();
     }
 
-    public boolean checkValid(int input){
+    public boolean checkValid(int input) {
         return input > 0;
     }
 
-    public boolean checkValid(double input){
+    public boolean checkValid(double input) {
         return input > 0;
     }
 
     public boolean assertCorrectCreateMemberDTO(CreateMemberDTO createMemberDTO) {
-        var toCheck = checkValid(createMemberDTO.getFirstName()) && checkValid(createMemberDTO.getLastName()) && checkValid(createMemberDTO.getEmail()) && checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateNumber()) && checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateCountry()) && checkValid(createMemberDTO.getTelephoneNumber()) && assertCorrectCreateLicensePlateDTO(createMemberDTO.getLicensePlateDTO()) && assertCorrectCreateAddressDTO(createMemberDTO.getAddress());
+        var toCheck = checkValid(createMemberDTO.getFirstName())
+                && checkValid(createMemberDTO.getLastName())
+                && checkValid(createMemberDTO.getEmail())
+                && checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateNumber())
+                && checkValid(createMemberDTO.getLicensePlateDTO().getLicensePlateCountry())
+                && checkValid(createMemberDTO.getTelephoneNumber())
+                && assertCorrectCreateLicensePlateDTO(createMemberDTO.getLicensePlateDTO())
+                && assertCorrectCreateAddressDTO(createMemberDTO.getAddress());
 
         if (!toCheck) {
             logger.error("Data provided for new member invalid");
@@ -41,8 +48,11 @@ public class ValidationService {
         return true;
     }
 
-    public boolean assertCorrectCreateAddressDTO(CreateAddressDTO dto) {
-        var toCheck = checkValid(dto.getZipcode()) && checkValid(dto.getCity()) && checkValid(dto.getStreet()) && checkValid(dto.getHouseNumber());
+    public boolean assertCorrectCreateAddressDTO(CreateAddressDTO createAddressDTO) {
+        var toCheck = checkValid(createAddressDTO.getZipcode())
+                && checkValid(createAddressDTO.getCity())
+                && checkValid(createAddressDTO.getStreet())
+                && checkValid(createAddressDTO.getHouseNumber());
 
         if (!toCheck) {
             logger.error("Data provided for new member address invalid");
@@ -52,8 +62,9 @@ public class ValidationService {
         return true;
     }
 
-    public boolean assertCorrectCreateLicensePlateDTO(CreateLicensePlateDTO dto) {
-        var toCheck = checkValid(dto.getLicensePlateCountry()) && checkValid(dto.getLicensePlateNumber());
+    public boolean assertCorrectCreateLicensePlateDTO(CreateLicensePlateDTO createLicensePlateDTO) {
+        var toCheck = checkValid(createLicensePlateDTO.getLicensePlateCountry())
+                && checkValid(createLicensePlateDTO.getLicensePlateNumber());
 
         if (!toCheck) {
             logger.error("Data provided for new member address invalid");
@@ -63,8 +74,8 @@ public class ValidationService {
         return true;
     }
 
-    public boolean assertCorrectCreateDivisionDTO(CreateDivisionDTO dto) {
-        var toCheck = checkValid(dto.getName()) && checkValid(dto.getOriginalName());
+    public boolean assertCorrectCreateDivisionDTO(CreateDivisionDTO createDivisionDTO) {
+        var toCheck = checkValid(createDivisionDTO.getName()) && checkValid(createDivisionDTO.getOriginalName());
 
         if (!toCheck) {
             logger.error("Data provided for new Division invalid");
@@ -74,10 +85,16 @@ public class ValidationService {
         return true;
     }
 
-    public boolean assertCorrectCreateParkingLotDTO(CreateParkingLotDTO dto){
-        var toCheck = checkValid(dto.getName()) && checkValid(dto.getAddress().toString()) && checkValid(dto.getCategory().toString()) && checkValid(dto.getDivision().toString()) && checkValid(dto.getContactPerson().toString()) && checkValid(dto.getHourlyPrice()) && checkValid(dto.getMaxCapacity());
+    public boolean assertCorrectCreateParkingLotDTO(CreateParkingLotDTO createParkingLotDTO) {
+        var toCheck = checkValid(createParkingLotDTO.getName())
+                && checkValid(createParkingLotDTO.getAddress().toString())
+                && checkValid(createParkingLotDTO.getCategory().toString())
+                && checkValid(createParkingLotDTO.getDivision().toString())
+                && checkValid(createParkingLotDTO.getContactPerson().toString())
+                && checkValid(createParkingLotDTO.getHourlyPrice())
+                && checkValid(createParkingLotDTO.getMaxCapacity());
 
-        if(!toCheck){
+        if (!toCheck) {
             logger.error("Data provided for new parking lot invalid");
             throw new BadCreateParkingLotException();
         }
