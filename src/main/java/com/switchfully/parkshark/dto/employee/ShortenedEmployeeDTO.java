@@ -1,26 +1,23 @@
 package com.switchfully.parkshark.dto.employee;
 
 import com.switchfully.parkshark.entity.Address;
-import com.switchfully.parkshark.entity.ParkingLot;
 
-public class EmployeeDTO {
+public class ShortenedEmployeeDTO {
 
     private final int directorId;
     private final String firstName;
     private final String lastName;
     private final String mobileNumber;
     private final String telephoneNumber;
-    private final Address address;
     private final String email;
     private final String empTitle;
 
-    public EmployeeDTO(int directorId, String firstName, String lastName, String mobileNumber, String telephoneNumber, Address address, String email, String empTitle) {
+    public ShortenedEmployeeDTO(int directorId, String firstName, String lastName, String mobileNumber, String telephoneNumber, String email, String empTitle) {
         this.directorId = directorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobileNumber = mobileNumber;
         this.telephoneNumber = telephoneNumber;
-        this.address = address;
         this.email = email;
         this.empTitle = empTitle;
     }
@@ -45,10 +42,6 @@ public class EmployeeDTO {
         return telephoneNumber;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -57,13 +50,13 @@ public class EmployeeDTO {
         return empTitle;
     }
 
+
     public static final class Builder {
         private int directorId;
         private String firstName;
         private String lastName;
         private String mobileNumber;
         private String telephoneNumber;
-        private Address address;
         private String email;
         private String empTitle;
 
@@ -92,11 +85,6 @@ public class EmployeeDTO {
             return this;
         }
 
-        public Builder withAddress(Address address) {
-            this.address = address;
-            return this;
-        }
-
         public Builder withEmail(String email) {
             this.email = email;
             return this;
@@ -107,8 +95,8 @@ public class EmployeeDTO {
             return this;
         }
 
-        public EmployeeDTO build() {
-            return new EmployeeDTO(directorId, firstName, lastName, mobileNumber, telephoneNumber, address, email, empTitle);
+        public ShortenedEmployeeDTO build() {
+            return new ShortenedEmployeeDTO(directorId, firstName, lastName, mobileNumber, telephoneNumber, email, empTitle);
         }
     }
 }

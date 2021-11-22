@@ -3,6 +3,7 @@ package com.switchfully.parkshark.mapper;
 
 import com.switchfully.parkshark.dto.employee.EmployeeDTO;
 import com.switchfully.parkshark.dto.employee.EmployeeUpperDivisionDTO;
+import com.switchfully.parkshark.dto.employee.ShortenedEmployeeDTO;
 import com.switchfully.parkshark.entity.Employee;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,18 @@ public class EmployeeMapper {
                 .withMobileNumber(employee.getMobileNumber())
                 .withEmail(employee.getEmail())
                 .withAddress(employee.getAddress())
-                .withParkingLot(employee.getParkingLot())
+                .withEmpTitle(employee.getEmpTitle())
+                .build();
+    }
+
+    public ShortenedEmployeeDTO toDtoShortenedEmployee(Employee employee){
+        return new ShortenedEmployeeDTO.Builder()
+                .withDirectorId(employee.getEmployeeId())
+                .withFirstName(employee.getFirstName())
+                .withLastName(employee.getLastName())
+                .withTelephoneNumber(employee.getTelephoneNumber())
+                .withMobileNumber(employee.getMobileNumber())
+                .withEmail(employee.getEmail())
                 .withEmpTitle(employee.getEmpTitle())
                 .build();
     }
