@@ -31,10 +31,10 @@ public class MemberService {
         this.validation = validation;
     }
 
-    public MemberDTO createMember(CreateMemberDTO createMemberDTO, Member.MembershipLevel membershipLevel) {
+    public MemberDTO createMember(CreateMemberDTO createMemberDTO) {
         validation.assertCorrectCreateMemberDTO(createMemberDTO);
         logger.info("Data for create member valid");
-        var newMember = mapper.toEntity(createMemberDTO, membershipLevel);
+        var newMember = mapper.toEntity(createMemberDTO);
         repository.save(newMember);
         return mapper.toDto(newMember);
     }

@@ -27,10 +27,9 @@ public class MemberController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public MemberDTO createMember(@RequestBody CreateMemberDTO createMemberDTO,
-                                  @RequestParam(required = false) Member.MembershipLevel membershipLevel) {
+    public MemberDTO createMember(@RequestBody CreateMemberDTO createMemberDTO) {
         logger.info("Attempting to create a member.");
-        return memberService.createMember(createMemberDTO,membershipLevel);
+        return memberService.createMember(createMemberDTO);
     }
 
     @GetMapping(produces = "application/json")
