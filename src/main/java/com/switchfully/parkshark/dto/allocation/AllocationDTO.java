@@ -7,6 +7,7 @@ import com.switchfully.parkshark.entity.Allocation;
 import java.time.LocalDateTime;
 
 public class AllocationDTO {
+
     private final int allocationId;
     private final LocalDateTime startHour;
     private final LocalDateTime endHour;
