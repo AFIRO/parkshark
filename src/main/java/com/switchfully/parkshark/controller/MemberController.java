@@ -2,6 +2,7 @@ package com.switchfully.parkshark.controller;
 
 import com.switchfully.parkshark.dto.member.CreateMemberDTO;
 import com.switchfully.parkshark.dto.member.MemberDTO;
+import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.service.MemberService;
 import com.switchfully.parkshark.switchsecure.SecurityGuard;
 import org.slf4j.Logger;
@@ -26,9 +27,10 @@ public class MemberController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     @SecurityGuard(SecurityGuard.ApiUserRole.MANAGER)
-    public MemberDTO createMember(@RequestBody CreateMemberDTO createMemberDTO) {
+    public MemberDTO createMember(@RequestBody CreateMemberDTO createMemberDTO,
+                                  @RequestParam(required = false) Member.MembershipLevel membershipLevel) {
         logger.info("Attempting to create a member.");
-        return memberService.createMember(createMemberDTO);
+        return memberService.createMember(createMemberDTO,membershipLevel);
     }
 
     @GetMapping(produces = "application/json")

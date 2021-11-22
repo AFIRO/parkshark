@@ -13,7 +13,6 @@ public class CreateMemberDTO {
     private String telephoneNumber;
     private String email;
     private CreateLicensePlateDTO licensePlateDTO;
-    private Member.MembershipLevel membershipLevel;
     private final LocalDate registrationDate;
 
     public CreateMemberDTO(String firstName, String lastName, CreateAddressDTO address, String telephoneNumber, String email, CreateLicensePlateDTO licensePlateDTO, Member.MembershipLevel membershipLevel, LocalDate registrationDate) {
@@ -23,7 +22,6 @@ public class CreateMemberDTO {
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.licensePlateDTO = licensePlateDTO;
-        this.membershipLevel = membershipLevel;
         this.registrationDate = registrationDate;
     }
 
@@ -63,7 +61,4 @@ public class CreateMemberDTO {
         return address;
     }
 
-    public Member.MembershipLevel getMembershipLevel() {
-        return membershipLevel;
-    }
 }
