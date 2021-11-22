@@ -8,6 +8,7 @@ import com.switchfully.parkshark.exceptions.allocation.AllocationAlreadyStoppedE
 import com.switchfully.parkshark.exceptions.allocation.NoSuchAllocationException;
 import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfAllocationException;
 import com.switchfully.parkshark.exceptions.allocation.WrongOwnerOfLicensePlateException;
+import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.mapper.AllocationMapper;
 import com.switchfully.parkshark.repository.AllocationRepository;
 import org.springframework.stereotype.Service;
@@ -42,8 +43,8 @@ public class AllocationService {
 
         return allocationRepository.findAll().stream()
                 .filter(filterStatusPredicate)
-                .limit(maxResults)
                 .sorted(sortComparator)
+                .limit(maxResults)
                 .map(allocationMapper::toDto)
                 .collect(Collectors.toList());
     }
@@ -52,8 +53,8 @@ public class AllocationService {
         Allocation allocation = allocationMapper.toEntity(createAllocationDTO);
 
         Member member = allocation.getMember();
-        if (member.getMembershipLevel() != Member.MembershipLevel.GOLD && !member.getLicensePlate().getLicensePlateNumber().equalsIgnoreCase(createAllocationDTO.getLicensePlate()))
-            throw new WrongOwnerOfLicensePlateException();
+        if (member == null) throw new NoSuchMemberException();
+        if (member.getMembershipLevel() != Member.MembershipLevel.GOLD && !member.getLicensePlate().getLicensePlateNumber().equalsIgnoreCase(createAllocationDTO.getLicensePlate())) throw new WrongOwnerOfLicensePlateException();
 
         allocationRepository.save(allocation);
         return allocationMapper.toDto(allocation);
@@ -63,8 +64,7 @@ public class AllocationService {
         Allocation allocation = allocationRepository.findAllocationByAllocationId(allocationId);
 
         if (allocation == null) throw new NoSuchAllocationException();
-        if (allocation.getStatus() == Allocation.AllocationStatus.STOPPED)
-            throw new AllocationAlreadyStoppedException();
+        if (allocation.getStatus() == Allocation.AllocationStatus.STOPPED) throw new AllocationAlreadyStoppedException();
         if (allocation.getMember().getMemberId() != memberId) throw new WrongOwnerOfAllocationException();
 
         allocation.stop();

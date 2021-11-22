@@ -27,14 +27,6 @@ public class AllocationDTO {
         return allocationId;
     }
 
-    public MemberDTO getMember() {
-        return member;
-    }
-
-    public ParkingLotDTO getParkingLot() {
-        return parkingLot;
-    }
-
     public LocalDateTime getStartHour() {
         return startHour;
     }
@@ -45,6 +37,14 @@ public class AllocationDTO {
 
     public Allocation.AllocationStatus getStatus() {
         return status;
+    }
+
+    public MemberDTO getMember() {
+        return member;
+    }
+
+    public ParkingLotDTO getParkingLot() {
+        return parkingLot;
     }
 
     public static final class Builder {
