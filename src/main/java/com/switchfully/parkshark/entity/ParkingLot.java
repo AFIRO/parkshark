@@ -13,21 +13,28 @@ public class ParkingLot {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "parking_lot_pl_id_seq")
     @Column(name = "pl_id")
     private int parkingLotId;
+
     @Column(name = "pl_name")
     private String name;
+
     @Column(name = "pl_max_cap")
     private int maxCapacity;
+
     @Column(name = "pl_price_hour")
     private double hourlyPrice;
+
     @Column(name = "pl_category")
     @Enumerated(EnumType.STRING)
     private Category category;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pl_address_id")
     private Address parkingLotAddress;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pl_contact_id")
     private Employee employee;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pl_div_id")
     private Division division;
