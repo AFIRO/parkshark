@@ -19,4 +19,10 @@ public class ParkingLotControllerExceptionHandler extends ResponseEntityExceptio
         response.sendError(HttpStatus.FORBIDDEN.value(), exception.getMessage());
     }
 
+    @ExceptionHandler(BadCreateParkingLotException.class)
+    protected void badCreateParkingLotException(BadCreateParkingLotException exception, HttpServletResponse response) throws Exception{
+        logger.error(exception.getMessage());
+        response.sendError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+    }
+
 }

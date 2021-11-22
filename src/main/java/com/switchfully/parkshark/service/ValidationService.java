@@ -4,10 +4,12 @@ import com.switchfully.parkshark.dto.address.CreateAddressDTO;
 import com.switchfully.parkshark.dto.division.CreateDivisionDTO;
 import com.switchfully.parkshark.dto.licenseplate.CreateLicensePlateDTO;
 import com.switchfully.parkshark.dto.member.CreateMemberDTO;
+import com.switchfully.parkshark.dto.parkinglot.CreateParkingLotDTO;
 import com.switchfully.parkshark.exceptions.division.BadCreateDivisionException;
 import com.switchfully.parkshark.exceptions.member.BadCreateAddressException;
 import com.switchfully.parkshark.exceptions.member.BadCreateLicensePlateException;
 import com.switchfully.parkshark.exceptions.member.BadCreateMemberException;
+import com.switchfully.parkshark.exceptions.parkinglot.BadCreateParkingLotException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,14 @@ public class ValidationService {
 
     public boolean checkValid(String input) {
         return input != null && !input.isBlank() && !input.isEmpty();
+    }
+
+    public boolean checkValid(int input){
+        return input > 0;
+    }
+
+    public boolean checkValid(double input){
+        return input > 0;
     }
 
     public boolean assertCorrectCreateMemberDTO(CreateMemberDTO createMemberDTO) {
@@ -59,6 +69,17 @@ public class ValidationService {
         if (!toCheck) {
             logger.error("Data provided for new Division invalid");
             throw new BadCreateDivisionException();
+        }
+
+        return true;
+    }
+
+    public boolean assertCorrectCreateParkingLotDTO(CreateParkingLotDTO dto){
+        var toCheck = checkValid(dto.getName()) && checkValid(dto.getAddress().toString()) && checkValid(dto.getCategory().toString()) && checkValid(dto.getDivision().toString()) && checkValid(dto.getContactPerson().toString()) && checkValid(dto.getHourlyPrice()) && checkValid(dto.getMaxCapacity());
+
+        if(!toCheck){
+            logger.error("Data provided for new parking lot invalid");
+            throw new BadCreateParkingLotException();
         }
 
         return true;

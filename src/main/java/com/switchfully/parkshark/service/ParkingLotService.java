@@ -23,11 +23,13 @@ public class ParkingLotService {
     private final ParkingLotRepository parkingLotRepository;
     private final ParkingLotMapper parkingLotMapper;
     private final Logger logger = LoggerFactory.getLogger(ParkingLotService.class);
+    private final ValidationService validationService;
 
     @Autowired
-    public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper) {
+    public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper, ValidationService validationService) {
         this.parkingLotRepository = parkingLotRepository;
         this.parkingLotMapper = parkingLotMapper;
+        this.validationService = validationService;
     }
 
     public List<ShortenedParkingLotDTO> getAllLots() {
@@ -38,50 +40,19 @@ public class ParkingLotService {
 
     }
 
-
     public ParkingLotDTO createParkingLot(CreateParkingLotDTO createParkingLotDTO) {
-        logger.info("attempting to create parking lot...");
+        validationService.assertCorrectCreateParkingLotDTO(createParkingLotDTO);
+        logger.info("Data for creating parking lot valid.");
         ParkingLot parkingLot = parkingLotMapper.toEntity(createParkingLotDTO);
         parkingLotRepository.save(parkingLot);
         return parkingLotMapper.toDto(parkingLot);
     }
 
     public ParkingLotDTO getSpecificLotById(int id) {
-        logger.info("getting specific lot");
         var toCheck = parkingLotRepository.findById(id);
         if (toCheck.isEmpty())
             throw new NoSuchParkingLotException();
 
         return parkingLotMapper.toDto(toCheck.get());
     }
-
-
-    //start van mogelijke validatiecode. Afwerkingen indien tijd genoeg.
-
-//    private void assertValidCreateParkingLotDTO(CreateParkingLotDTO dto){
-//        var toCheck = checkValid(dto.getName()) || assertCorrectCreateAddressDTO(dto.getAddress())
-//    }
-
-//    private boolean checkValid(String input) {
-//        return !input.isBlank() && !input.isEmpty() && input != null;
-//    }
-//
-//    private boolean checkValid(int input) {
-//        return input> 0;
-//    }
-//
-//    private boolean checkValid(double input) {
-//        return input> 0;
-//    }
-//
-//    private boolean assertCorrectCreateAddressDTO(CreateAddressDTO dto) {
-//        var toCheck = checkValid(dto.getZipcode()) || checkValid(dto.getCity()) || checkValid(dto.getStreet()) || checkValid(dto.getHouseNumber());
-//
-//        if (!toCheck) {
-//            logger.error("Data provided for new member address invalid");
-//            throw new BadCreateAddressException();
-//        }
-//
-//        return true;
-//    }
 }
