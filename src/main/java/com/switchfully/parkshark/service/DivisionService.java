@@ -41,7 +41,7 @@ public class DivisionService {
                 throw new NoSuchDivisionException();
             }
         }
-        if(employeeRepository.findByEmployeeId(createDivisionDTO.getDirector())== null){
+        if(createDivisionDTO.getDirector() == null || employeeRepository.findByEmployeeId(createDivisionDTO.getDirector())== null){
             logger.error("Data provided for director invalid");
             throw new NoSuchEmployeeException();
         }
