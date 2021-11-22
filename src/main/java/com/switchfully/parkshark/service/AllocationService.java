@@ -51,7 +51,6 @@ public class AllocationService {
         Allocation allocation = allocationMapper.toEntity(createAllocationDTO);
 
         Member member = allocation.getMember();
-        if (member == null) throw new NoSuchMemberException();
         if (member.getMembershipLevel() != Member.MembershipLevel.GOLD && !member.getLicensePlate().getLicensePlateNumber().equalsIgnoreCase(createAllocationDTO.getLicensePlate())) throw new WrongOwnerOfLicensePlateException();
 
         allocationRepository.save(allocation);
