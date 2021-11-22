@@ -7,25 +7,31 @@ import com.switchfully.parkshark.dto.parkinglot.ParkingLotDTO;
 import com.switchfully.parkshark.entity.Allocation;
 import com.switchfully.parkshark.entity.Member;
 import com.switchfully.parkshark.entity.ParkingLot;
+import com.switchfully.parkshark.exceptions.allocation.ParkingLotIsAlreadyFullException;
 import com.switchfully.parkshark.exceptions.member.NoSuchMemberException;
 import com.switchfully.parkshark.exceptions.parkinglot.NoSuchParkingLotException;
+import com.switchfully.parkshark.repository.AllocationRepository;
 import com.switchfully.parkshark.repository.MemberRepository;
 import com.switchfully.parkshark.repository.ParkingLotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class AllocationMapper {
 
     private final MemberRepository memberRepository;
     private final MemberMapper memberMapper;
+    private final AllocationRepository allocationRepository;
     private final ParkingLotRepository parkingLotRepository;
     private final ParkingLotMapper parkingLotMapper;
 
     @Autowired
-    public AllocationMapper(MemberRepository memberRepository, MemberMapper memberMapper, ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper) {
+    public AllocationMapper(MemberRepository memberRepository, MemberMapper memberMapper, AllocationRepository allocationRepository, ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper) {
         this.memberRepository = memberRepository;
         this.memberMapper = memberMapper;
+        this.allocationRepository = allocationRepository;
         this.parkingLotRepository = parkingLotRepository;
         this.parkingLotMapper = parkingLotMapper;
     }
@@ -38,11 +44,15 @@ public class AllocationMapper {
         if (member == null) throw new NoSuchMemberException();
         if (parkingLot == null) throw new NoSuchParkingLotException();
 
+        int activeAllocationsForParkingLot = allocationRepository.countAllocationByParkingLotParkingLotIdAndStatus(parkingLot.getParkingLotId(), Allocation.AllocationStatus.ACTIVE);
+        int maximumCapacityOfParkingLot = parkingLot.getMaxCapacity();
+        if (activeAllocationsForParkingLot >= maximumCapacityOfParkingLot) throw new ParkingLotIsAlreadyFullException();
+
         return new Allocation.Builder()
                 .withMember(member)
                 .withParkingLot(parkingLot)
-                .withStartHour(createAllocationDTO.getStartHour())
-                .withStatus(createAllocationDTO.getStatus())
+                .withStartHour(LocalDateTime.now())
+                .withStatus(Allocation.AllocationStatus.ACTIVE)
                 .build();
     }
 

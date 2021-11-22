@@ -43,4 +43,10 @@ public class AllocationControllerExceptionHandler extends ResponseEntityExceptio
         response.sendError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
     }
 
+    @ExceptionHandler(ParkingLotIsAlreadyFullException.class)
+    protected void ParkingLotIsAlreadyFull(ParkingLotIsAlreadyFullException exception, HttpServletResponse response) throws Exception {
+        logger.error(exception.getMessage());
+        response.sendError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+    }
+
 }
